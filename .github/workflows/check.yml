@@ -1,0 +1,56 @@
+name: Check
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Check skill
+        run: python3 scripts/check-skill.py
+
+  lints:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Enable corepack
+        run: corepack enable
+      - name: Install the check harness dependencies
+        run: npm install --prefix lints/check
+      - name: Prove every rule in lints/eslint.config.mjs fires
+        run: bash scripts/check-lints.sh
+
+  examples:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install TypeScript for the example compiler
+        run: npm install --no-save --no-package-lock typescript@5
+      - name: Compile every TypeScript example in the skills and docs
+        run: python3 scripts/check-examples.py --require-toolchain
+
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      # The unittest suite compiles ts blocks and proves lints fire, so it
+      # needs the same toolchain the jobs above pin.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install the toolchain the checks need
+        run: npm install --no-save --no-package-lock typescript@5 && npm install --prefix lints/check
+      - name: Run the unittest suite (unit, contracts, integration, e2e)
+        run: python3 -I -m unittest discover -s tests -t .

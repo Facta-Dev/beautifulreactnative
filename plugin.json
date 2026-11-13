@@ -1,0 +1,57 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "beautiful-reactnative",
+  "version": "0.1.0",
+  "description": "Write, review, port, and enforce idiomatic React Native + Expo apps on TypeScript: three skills distilled from the React Native and Expo documentation, the facta mobile handbook, and the mobile performance guidance, plus a drop-in eslint config.",
+  "author": {
+    "name": "Facta-Dev",
+    "url": "https://github.com/Facta-Dev"
+  },
+  "homepage": "https://github.com/Facta-Dev/beautifulreactnative",
+  "repository": "https://github.com/Facta-Dev/beautifulreactnative",
+  "license": "MIT",
+  "keywords": [
+    "android",
+    "best-practices",
+    "code-review",
+    "expo",
+    "hermes",
+    "ios",
+    "mobile",
+    "new-architecture",
+    "porting",
+    "react-native",
+    "skill",
+    "typescript"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Beautiful React Native",
+        "shortDescription": "Write, review, port RN apps",
+        "longDescription": "Three skills for React Native + Expo developers on TypeScript, distilled from the React Native and Expo documentation, the facta mobile handbook, and the mobile performance guidance.\n\nreactnative-best-practices guides new mobile code: the View -> ViewModel -> SDK contract, the five screen states, TanStack Query and the outbox, deep-link and push parsing, device tiers and the quality governor, FlashList/expo-image, the tiered SceneEngine port, secure storage, accessibility, and the unbreakable layer contract.\n\nreactnative-review reviews a screen, ViewModel, navigation/deep-link parser, SDK, offline code, push handling, scene adapter, or diff and returns a prioritized report. Architecture and device-tier contracts rank above everything. Every finding cites a file and line, the rule it breaks, and the smallest fix.\n\nreactnative-port ports a web React app, a bare RN app, a legacy screen, or a native screen to Expo + the New Architecture with the same behavior. It ports the original tests first and writes a PORTING.md.\n\nThe skills contain instructions and reference text only. They make no network calls and collect no data. When a Node.js toolchain is available, the skills run tsc, eslint, and vitest on your project; without one, they work from the code alone. A drop-in eslint config is available in the GitHub repository.",
+        "developerName": "Facta-Dev",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Write idiomatic React Native + Expo apps",
+          "Review mobile apps with cited rules",
+          "Port web or legacy screens with the same behavior"
+        ],
+        "websiteURL": "https://github.com/Facta-Dev/beautifulreactnative",
+        "supportURL": "https://github.com/Facta-Dev/beautifulreactnative/issues",
+        "privacyPolicyURL": "https://github.com/Facta-Dev/beautifulreactnative/blob/main/PRIVACY.md",
+        "defaultPrompt": [
+          "Review this orders screen and list what to fix first",
+          "Port this web React screen to React Native",
+          "Design the offline and outbox path for this feature"
+        ],
+        "brandColor": "#4630EB",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      },
+      "publication": {
+        "release_notes": "Initial release: three mobile skills, the layer and device-tier contract, and a proven eslint config."
+      }
+    }
+  }
+}

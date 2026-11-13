@@ -1,0 +1,4 @@
+{
+  "_comment": "No standalone ts blocks are ledgered yet: the RN skills use tsx fences for platform/JSX examples, and the lints/check project compiles the TypeScript harness instead. Add an entry here when a self-contained ts block lands.",
+  "files": {}
+}

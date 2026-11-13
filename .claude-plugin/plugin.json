@@ -1,0 +1,31 @@
+{
+  "name": "beautiful-reactnative",
+  "version": "0.1.0",
+  "description": "Write, review, port, and enforce idiomatic React Native + Expo apps on TypeScript: three skills distilled from the React Native and Expo documentation, the facta mobile handbook, and the mobile performance guidance, plus a drop-in eslint config.",
+  "license": "MIT",
+  "author": {
+    "name": "Facta-Dev",
+    "url": "https://github.com/Facta-Dev"
+  },
+  "homepage": "https://github.com/Facta-Dev/beautifulreactnative",
+  "repository": "https://github.com/Facta-Dev/beautifulreactnative",
+  "keywords": [
+    "android",
+    "best-practices",
+    "code-review",
+    "expo",
+    "hermes",
+    "ios",
+    "mobile",
+    "new-architecture",
+    "porting",
+    "react-native",
+    "skill",
+    "typescript"
+  ],
+  "skills": [
+    "./skills/reactnative-best-practices",
+    "./skills/reactnative-port",
+    "./skills/reactnative-review"
+  ]
+}

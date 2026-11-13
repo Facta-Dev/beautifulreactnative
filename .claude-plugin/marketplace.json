@@ -1,0 +1,15 @@
+{
+  "name": "beautiful-reactnative",
+  "owner": {
+    "name": "Facta-Dev",
+    "url": "https://github.com/Facta-Dev"
+  },
+  "description": "Skills for writing beautiful, robust React Native + Expo apps with Claude.",
+  "plugins": [
+    {
+      "name": "beautiful-reactnative",
+      "source": "./",
+      "description": "Skills that teach Claude to write, review, and port idiomatic React Native + Expo apps with the View -> ViewModel -> SDK contract, device tiers and a proven eslint config."
+    }
+  ]
+}
