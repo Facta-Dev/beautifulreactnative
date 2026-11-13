@@ -207,14 +207,17 @@ rule without a source and a failing example is a preference, not a rule. See
 ## Siblings
 
 Beautiful React Native is part of the Beautiful series for the facta
-playbooks:
+playbooks: [beautiful-j2ee](https://github.com/Facta-Dev/beautiful-j2ee),
+[beautifulandroid](https://github.com/Facta-Dev/beautifulandroid),
+[beautifulcli](https://github.com/Facta-Dev/beautifulcli),
+[beautifulextension](https://github.com/Facta-Dev/beautifulextension),
 [beautifulgo](https://github.com/Facta-Dev/beautifulgo),
+[beautifulios](https://github.com/Facta-Dev/beautifulios),
 [beautifulnodejs](https://github.com/Facta-Dev/beautifulnodejs),
 [beautifulpython](https://github.com/Facta-Dev/beautifulpython),
-[beautifulrust](https://github.com/Facta-Dev/beautifulrust),
+[beautifulqt](https://github.com/Facta-Dev/beautifulqt),
 [beautifulreact](https://github.com/Facta-Dev/beautifulreact),
-[beautifulextension](https://github.com/Facta-Dev/beautifulextension) and
-[beautifulcli](https://github.com/Facta-Dev/beautifulcli).
+[beautifulrust](https://github.com/Facta-Dev/beautifulrust).
 
 ## License
 
