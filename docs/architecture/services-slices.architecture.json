@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "beautifulreactnative — Layers & Feature Packs",
+    "quality_profile": "showcase",
+    "output": "services-slices.architecture.html"
+  },
+  "components": [
+    {
+      "id": "composition",
+      "type": "backend",
+      "label": "Composition root",
+      "sublabel": "routes · providers · adapters",
+      "pos": [40, 90],
+      "size": [170, 60]
+    },
+    {
+      "id": "views",
+      "type": "frontend",
+      "label": "Views",
+      "sublabel": "screens · a11y · events",
+      "pos": [300, 90],
+      "size": [160, 60]
+    },
+    {
+      "id": "ui-native",
+      "type": "frontend",
+      "label": "ui-native · tokens",
+      "sublabel": "UI kit · design tokens",
+      "pos": [560, 90],
+      "size": [170, 60]
+    },
+    {
+      "id": "viewmodels",
+      "type": "backend",
+      "label": "ViewModel hooks",
+      "sublabel": "state · commands · derived",
+      "pos": [300, 250],
+      "size": [160, 60]
+    },
+    {
+      "id": "sdk",
+      "type": "backend",
+      "label": "SDK",
+      "sublabel": "typed client · DTOs · errors",
+      "pos": [560, 250],
+      "size": [170, 60]
+    },
+    {
+      "id": "ports",
+      "type": "backend",
+      "label": "Ports",
+      "sublabel": "Navigator · Notifier · SecretStore",
+      "pos": [300, 410],
+      "size": [160, 60]
+    },
+    {
+      "id": "adapters",
+      "type": "backend",
+      "label": "Adapters",
+      "sublabel": "keystore · MMKV · fetch · push",
+      "pos": [560, 410],
+      "size": [170, 60]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Composition root — the only place the adapters are wired",
+      "wraps": ["composition"]
+    },
+    {
+      "kind": "region",
+      "label": "Feature pack — features/<name>/{views,viewmodels,ports,assets} · WALL: the View never imports the SDK",
+      "wraps": ["views", "viewmodels", "ports"]
+    },
+    {
+      "kind": "region",
+      "label": "Shared packages — sdk · core · ui-native · tokens",
+      "wraps": ["sdk", "ui-native"]
+    },
+    {
+      "kind": "region",
+      "label": "Platform adapters — the only code that touches a platform API",
+      "wraps": ["adapters"]
+    }
+  ],
+  "connections": [
+    {
+      "id": "s1",
+      "from": "composition",
+      "to": "views",
+      "label": "routes · providers"
+    },
+    {
+      "id": "s2",
+      "from": "views",
+      "to": "viewmodels",
+      "label": "state + events",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "s3",
+      "from": "views",
+      "to": "ui-native",
+      "label": "UI kit · a11y props"
+    },
+    {
+      "id": "s4",
+      "from": "viewmodels",
+      "to": "sdk",
+      "label": "SDK calls"
+    },
+    {
+      "id": "s5",
+      "from": "viewmodels",
+      "to": "ports",
+      "label": "platform capabilities",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "s6",
+      "from": "sdk",
+      "to": "adapters",
+      "label": "Transport · TokenStore",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "s7",
+      "from": "ports",
+      "to": "adapters",
+      "label": "implementations"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "The layer contract",
+      "items": [
+        "View — render native components, forward events, navigation, a11y; it may import its ViewModel hook, the UI kit and platform rendering APIs, and nothing else",
+        "ViewModel — presentation state, commands, derived values and SDK orchestration; it may import the SDK, the ports and shared domain types, and never react-native, react-dom or a UI component",
+        "SDK — typed HTTP client, DTOs, error normalization and auth headers; it may import the core ports and types, and never React, React Native or any UI",
+        "Ports — platform capabilities behind an interface; a port belongs to the consumer and the composition root wires the adapter, so a use case depends on the SDK interface, not on a concrete client"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Feature packs and variants",
+      "items": [
+        "a feature pack is features/<name>/{views,viewmodels,ports,assets}; the feature name matches the backend slice, the route module and the permission prefix",
+        "one monorepo, three apps — game, market and avatar — selected by APP_VARIANT with separate bundle IDs, permissions and store listings",
+        "shared packages are sdk, core, viewmodels, ui-native and tokens; each app imports only what it ships, and a variant that does not ship a feature does not bundle its native module or assets"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "The walls are lint rules",
+      "items": [
+        "no-restricted-imports for src/**/views/** and src/screens/**: the groups @/sdk, @/sdk/* and **/sdk/* are denied — the View never talks to the network",
+        "no-restricted-imports for src/**/viewmodels/**: react-native, react-dom and @/views are denied — the ViewModel stays platform-free",
+        "no-restricted-imports for src/sdk/**: react, react-native and @/session are denied — the SDK stays a plain TypeScript client",
+        "the same config pins react-hooks/rules-of-hooks and exhaustive-deps, the no-remote-code rules (no-eval, no-new-func, no-implied-eval), switch-exhaustiveness-check, no-floating-promises and a single logger"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "A config exception is a contract change",
+      "items": [
+        "when a change would cross a layer, re-cut the layout: move the logic to the layer that owns it; the rule is never to weaken or delete the lints to make a change pass",
+        "lints/check/ is the violation harness: one deliberate file per rule with an // expect:<rule> marker plus a clean control; scripts/check-lints.sh fails if a marked rule stays quiet, if anything unmarked fires, or if tsc --noEmit fails on the same files",
+        "tests/contracts pins the wording across SKILL.md, the reference digests, the README and the config in lockstep, so a drift between the skill and the machine gate fails CI"
+      ]
+    }
+  ]
+}

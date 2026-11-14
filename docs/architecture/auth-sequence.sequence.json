@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "beautifulreactnative — Auth Sequence",
+    "quality_profile": "showcase",
+    "output": "auth-sequence.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "user",
+      "type": "external",
+      "label": "App user",
+      "sublabel": "tap · deep link"
+    },
+    {
+      "id": "vm",
+      "type": "frontend",
+      "label": "ViewModel",
+      "sublabel": "signIn command"
+    },
+    {
+      "id": "browser",
+      "type": "external",
+      "label": "System browser",
+      "sublabel": "OIDC + PKCE"
+    },
+    {
+      "id": "api",
+      "type": "backend",
+      "label": "Backend API",
+      "sublabel": "identity slice · authorizes"
+    },
+    {
+      "id": "keystore",
+      "type": "database",
+      "label": "OS keystore",
+      "sublabel": "SecretStore · TokenStore"
+    }
+  ],
+  "segments": [
+    { "from": 160, "to": 300, "label": "Sign in in the system browser" },
+    { "from": 330, "to": 450, "label": "Exchange + store" },
+    { "from": 462, "to": 530, "label": "Use the token" }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "user",
+      "to": "vm",
+      "y": 170,
+      "label": "Sign in — a ViewModel command, never a fetch in the View"
+    },
+    {
+      "id": "m2",
+      "from": "vm",
+      "to": "browser",
+      "y": 204,
+      "label": "open the OIDC authorize URL (PKCE challenge)"
+    },
+    {
+      "id": "m3",
+      "from": "browser",
+      "to": "api",
+      "y": 238,
+      "label": "authorize the account",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m4",
+      "from": "api",
+      "to": "browser",
+      "y": 272,
+      "label": "authorization code",
+      "variant": "return"
+    },
+    {
+      "id": "m5",
+      "from": "browser",
+      "to": "vm",
+      "y": 306,
+      "label": "redirect back with the code"
+    },
+    {
+      "id": "m6",
+      "from": "vm",
+      "to": "api",
+      "y": 340,
+      "label": "POST /auth/token — code + verifier"
+    },
+    {
+      "id": "m7",
+      "from": "api",
+      "to": "vm",
+      "y": 374,
+      "label": "access + refresh tokens",
+      "variant": "return"
+    },
+    {
+      "id": "m8",
+      "from": "vm",
+      "to": "keystore",
+      "y": 408,
+      "label": "write through the SecretStore port",
+      "variant": "security"
+    },
+    {
+      "id": "m9",
+      "from": "keystore",
+      "to": "vm",
+      "y": 442,
+      "label": "stored — never in AsyncStorage, MMKV, a log or the bundle",
+      "variant": "return"
+    },
+    {
+      "id": "m10",
+      "from": "vm",
+      "to": "api",
+      "y": 476,
+      "label": "GET /orders — the SDK attaches the bearer",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m11",
+      "from": "api",
+      "to": "vm",
+      "y": 510,
+      "label": "200 · data (the server authorized it)",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    { "participant": "vm", "from": 164, "to": 520, "type": "frontend" },
+    { "participant": "browser", "from": 232, "to": 312, "type": "external" },
+    { "participant": "api", "from": 232, "to": 280, "type": "backend" },
+    { "participant": "api", "from": 334, "to": 380, "type": "backend" },
+    { "participant": "keystore", "from": 402, "to": 448, "type": "database" },
+    { "participant": "api", "from": 470, "to": 516, "type": "backend" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Where the token lives",
+      "items": [
+        "TokenStore and SecretStore are ports owned by the SDK and the ViewModel; the keystore adapter is the only implementation that touches the platform",
+        "a token in AsyncStorage, MMKV, a log line or the bundle is a finding, not a shortcut — the SDK attaches the header and the View never reads it",
+        "clear user data on sign-out and on a tenant switch; a shared device is the default assumption"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "The browser is the boundary",
+      "items": [
+        "the system browser runs OIDC with PKCE, so the app never holds the password and the code is bound to the verifier the app generated",
+        "a deep link received while signed out is queued and resumed after login — not dropped and not replayed blindly",
+        "an unknown route falls back to the not-found screen; the parser allowlists the host and validates every parameter"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "The server decides",
+      "items": [
+        "401 means the access token expired: refresh with rotation, and a reused refresh token is treated as a compromise and revokes the family",
+        "403 is a stable forbidden state the screen renders with the required permission — hiding the button was never the control",
+        "jailbreak or root is evaluated server-side as a risk signal; the client never blocks on it, and pinning ships only with a rotation plan"
+      ]
+    }
+  ]
+}

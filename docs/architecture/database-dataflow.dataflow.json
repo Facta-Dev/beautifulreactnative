@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "beautifulreactnative — Dataflow: where state goes",
+    "quality_profile": "showcase",
+    "output": "database-dataflow.dataflow.html"
+  },
+  "stages": [
+    {
+      "label": "Device stores"
+    },
+    {
+      "label": "App state"
+    },
+    {
+      "label": "Transport"
+    },
+    {
+      "label": "Server"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "keystore",
+      "type": "security",
+      "label": "OS keystore",
+      "sublabel": "Keychain / Keystore",
+      "stage": 0,
+      "row": 0,
+      "width": 140
+    },
+    {
+      "id": "prefs",
+      "type": "database",
+      "label": "MMKV prefs",
+      "sublabel": "small persisted prefs",
+      "stage": 0,
+      "row": 1,
+      "width": 140
+    },
+    {
+      "id": "cache",
+      "type": "backend",
+      "label": "Query cache",
+      "sublabel": "TanStack Query",
+      "stage": 1,
+      "row": 0,
+      "width": 140
+    },
+    {
+      "id": "vm",
+      "type": "backend",
+      "label": "ViewModel",
+      "sublabel": "five screen states",
+      "stage": 1,
+      "row": 1,
+      "width": 130
+    },
+    {
+      "id": "outbox",
+      "type": "database",
+      "label": "Outbox store",
+      "sublabel": "persisted mutations",
+      "stage": 1,
+      "row": 2,
+      "width": 150
+    },
+    {
+      "id": "sdk",
+      "type": "backend",
+      "label": "SDK",
+      "sublabel": "typed client · DTOs",
+      "stage": 2,
+      "row": 0,
+      "width": 140
+    },
+    {
+      "id": "api",
+      "type": "external",
+      "label": "Backend API",
+      "sublabel": "server-authoritative",
+      "stage": 3,
+      "row": 0,
+      "width": 140
+    }
+  ],
+  "flows": [
+    {
+      "id": "df1",
+      "from": "vm",
+      "to": "outbox",
+      "label": "write row + queue (one tx)",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelAt": [
+        315,
+        315
+      ]
+    },
+    {
+      "id": "df2",
+      "from": "cache",
+      "to": "vm",
+      "label": "last good data → state",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelAt": [
+        305,
+        201
+      ]
+    },
+    {
+      "id": "df3",
+      "from": "outbox",
+      "to": "sdk",
+      "label": "drain · idempotency key",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "bottom"
+    },
+    {
+      "id": "df4",
+      "from": "sdk",
+      "to": "cache",
+      "label": "server state → cache",
+      "fromSide": "left",
+      "toSide": "right",
+      "labelAt": [
+        435,
+        201
+      ]
+    },
+    {
+      "id": "df5",
+      "from": "vm",
+      "to": "prefs",
+      "label": "persisted prefs",
+      "fromSide": "left",
+      "toSide": "right",
+      "labelAt": [
+        190,
+        315
+      ]
+    },
+    {
+      "id": "df6",
+      "from": "sdk",
+      "to": "keystore",
+      "label": "read the token",
+      "variant": "security",
+      "route": "top-channel"
+    },
+    {
+      "id": "df7",
+      "from": "sdk",
+      "to": "api",
+      "label": "REST + bearer",
+      "variant": "emphasis",
+      "fromSide": "right",
+      "toSide": "left"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Where the state lives",
+      "items": [
+        "MMKV holds tiny persisted preferences; AsyncStorage is only for small non-critical data — neither is a place for a secret",
+        "tokens and secrets live in the OS keystore behind the SecretStore and TokenStore ports — never in AsyncStorage, MMKV, a log or the bundle",
+        "typed storage carries a schema, a version and migrations, and the migrations run on startup and on the first read"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Server state and the cache",
+      "items": [
+        "TanStack Query plus the shared SDK carry the server state: cache keys, retries, dedupe and background refresh — never a useEffect fetch per screen",
+        "the query key is the cache identity: stable, serializable, and it contains every input the query depends on",
+        "the cache is the last good data; offline is a visible state beside it, not a generic error, and the list is cursor-paginated"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "The outbox is the write path",
+      "items": [
+        "the optimistic row and the queued mutation are written in one transaction; every queued mutation carries an idempotency key",
+        "the outbox is persisted, survives app restarts and drains on reconnect, on foreground and from a background task",
+        "the server wins a conflict and the rejection is visible; the client is untrusted, so prices, payments and entitlements are server-authoritative"
+      ]
+    }
+  ]
+}

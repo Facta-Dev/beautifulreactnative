@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "beautifulreactnative — Container Architecture",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "all",
+        "label": "All",
+        "focus": [
+          "users",
+          "app",
+          "browser",
+          "api",
+          "push",
+          "keystore",
+          "local-store"
+        ],
+        "note": "One Expo binary, the system browser for OIDC, the backend API as the authority, and two platform stores: the keystore and the local store."
+      },
+      {
+        "id": "auth",
+        "label": "Auth",
+        "focus": [
+          "app",
+          "browser",
+          "api",
+          "keystore"
+        ],
+        "note": "OIDC + PKCE in the system browser, the code exchanged at the API, and the tokens written to the OS keystore behind the SecretStore port."
+      },
+      {
+        "id": "offline",
+        "label": "Offline",
+        "focus": [
+          "app",
+          "api",
+          "local-store"
+        ],
+        "note": "The outbox queue lives in the typed local store, drains on reconnect, foreground and a background task, and the server wins every conflict."
+      },
+      {
+        "id": "delivery",
+        "label": "Push",
+        "focus": [
+          "app",
+          "api",
+          "push"
+        ],
+        "note": "Device tokens register on login and are revoked on logout; the tap uses the deep-link parser and carries no action of its own."
+      }
+    ],
+    "output": "c4-containers.html"
+  },
+  "components": [
+    {
+      "id": "users",
+      "type": "external",
+      "label": "App user",
+      "sublabel": "tap · deep link",
+      "pos": [30, 270],
+      "size": [110, 60]
+    },
+    {
+      "id": "app",
+      "type": "frontend",
+      "label": "Expo app binary",
+      "sublabel": "New Architecture · Hermes",
+      "pos": [200, 270],
+      "size": [170, 60]
+    },
+    {
+      "id": "browser",
+      "type": "external",
+      "label": "System browser",
+      "sublabel": "OIDC + PKCE",
+      "pos": [430, 100],
+      "size": [140, 60]
+    },
+    {
+      "id": "api",
+      "type": "external",
+      "label": "Backend API",
+      "sublabel": "server-authoritative",
+      "pos": [790, 270],
+      "size": [150, 60]
+    },
+    {
+      "id": "push",
+      "type": "external",
+      "label": "Push service",
+      "sublabel": "FCM / APNs",
+      "pos": [790, 450],
+      "size": [150, 60]
+    },
+    {
+      "id": "keystore",
+      "type": "security",
+      "label": "OS keystore",
+      "sublabel": "Keychain / Keystore",
+      "pos": [200, 450],
+      "size": [150, 60]
+    },
+    {
+      "id": "local-store",
+      "type": "database",
+      "label": "Typed local store",
+      "sublabel": "MMKV prefs · outbox",
+      "pos": [430, 450],
+      "size": [150, 60]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "The app binary — one variant, one bundle (APP_VARIANT)",
+      "wraps": ["app"]
+    },
+    {
+      "kind": "security-group",
+      "label": "Credential boundary — tokens live here and nowhere else",
+      "wraps": ["keystore"]
+    },
+    {
+      "kind": "region",
+      "label": "Local state — the only persistence the app owns",
+      "wraps": ["local-store"]
+    }
+  ],
+  "connections": [
+    {
+      "id": "k1",
+      "from": "users",
+      "to": "app",
+      "label": "tap · deep link",
+      "variant": "emphasis"
+    },
+    {
+      "id": "k2",
+      "from": "app",
+      "to": "browser",
+      "label": "OIDC + PKCE authorize",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "id": "k3",
+      "from": "browser",
+      "to": "api",
+      "label": "authorization code",
+      "fromSide": "right",
+      "toSide": "top"
+    },
+    {
+      "id": "k4",
+      "from": "app",
+      "to": "api",
+      "label": "REST + bearer",
+      "variant": "emphasis"
+    },
+    {
+      "id": "k5",
+      "from": "app",
+      "to": "keystore",
+      "label": "SecretStore · TokenStore",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "k6",
+      "from": "app",
+      "to": "local-store",
+      "label": "prefs · queued mutations",
+      "fromSide": "bottom",
+      "toSide": "left"
+    },
+    {
+      "id": "k7",
+      "from": "api",
+      "to": "push",
+      "label": "FCM HTTP v1 · device token",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "k8",
+      "from": "push",
+      "to": "app",
+      "label": "notification tap",
+      "variant": "dashed",
+      "fromSide": "left",
+      "toSide": "bottom"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "The layer contract inside the binary",
+      "items": [
+        "View → ViewModel → SDK → API: the View renders and forwards events, the ViewModel owns presentation state and commands, the SDK is a plain typed client, the API is the authority",
+        "the View never talks to the network — no fetch, no @/sdk import in a screen; the ViewModel is platform-free (no react-native, no react-dom, no views); the SDK never imports React or React Native",
+        "every screen renders every state — loading, empty, error, forbidden, offline, ready; a screen that renders a spinner for a lost connection is a broken contract, not a style choice"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "One variant, one binary",
+      "items": [
+        "APP_VARIANT picks game, market or avatar — separate bundle IDs, permissions and store listings; a combined super-app is not recommended",
+        "a variant that does not ship a feature does not bundle its native module or its assets: a market app must not carry a game engine",
+        "the app shell is React Native and heavy 3D is a replaceable module behind a SceneEngine port — auth, onboarding, settings, push and the market flows never depend on an engine"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "The client is untrusted",
+      "items": [
+        "game state, prices, payments and entitlements are server-authoritative; the client shapes UX and never decides access",
+        "the deep link and the push payload are untrusted input: parse against the route allowlist, validate every parameter, and offer an action instead of performing one",
+        "jailbreak or root is a server-side risk signal, never a client-side block; certificate pinning only ships with a rotation plan"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "The contract is machine-checkable",
+      "items": [
+        "lints/eslint.config.mjs pins the walls with no-restricted-imports per path: views deny @/sdk, viewmodels deny react-native/react-dom/@/views, the SDK denies react/react-native/@/session",
+        "lints/check/ is the violation harness — one deliberate file per rule with an // expect:<rule> marker plus a clean control; scripts/check-lints.sh fails if a marked rule stays quiet, if anything unmarked fires, or if tsc --noEmit fails",
+        "a config exception is a contract change: when a change would cross a layer, re-cut the layout instead of adding a path to the exception list"
+      ]
+    }
+  ]
+}

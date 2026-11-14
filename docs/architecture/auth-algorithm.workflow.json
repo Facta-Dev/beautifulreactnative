@@ -1,0 +1,136 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "beautifulreactnative — Auth Algorithm",
+    "quality_profile": "showcase",
+    "output": "auth-algorithm.workflow.html"
+  },
+  "lanes": [
+    { "id": "client", "label": "App" },
+    { "id": "browser", "label": "System browser" },
+    { "id": "identity", "label": "Identity" },
+    { "id": "keystore", "label": "Keystore" },
+    { "id": "server", "label": "API" }
+  ],
+  "phases": [
+    { "id": "signin", "label": "Sign in", "fromCol": 0, "toCol": 1 },
+    { "id": "exchange", "label": "Exchange + store", "fromCol": 2, "toCol": 3, "variant": "emphasis" },
+    { "id": "use", "label": "Use + rotate", "fromCol": 4, "toCol": 5 }
+  ],
+  "mainPath": ["signin", "authorize", "grant", "store", "call", "decide"],
+  "nodes": [
+    {
+      "id": "signin",
+      "lane": "client",
+      "col": 0,
+      "type": "frontend",
+      "label": "Sign in",
+      "sublabel": "a ViewModel command"
+    },
+    {
+      "id": "authorize",
+      "lane": "browser",
+      "col": 1,
+      "type": "external",
+      "label": "Authorize",
+      "sublabel": "OIDC + PKCE"
+    },
+    {
+      "id": "grant",
+      "lane": "identity",
+      "col": 2,
+      "type": "backend",
+      "label": "Token grant",
+      "sublabel": "code + verifier → tokens"
+    },
+    {
+      "id": "store",
+      "lane": "keystore",
+      "col": 3,
+      "type": "security",
+      "label": "Store tokens",
+      "sublabel": "SecretStore · never MMKV"
+    },
+    {
+      "id": "rotate",
+      "lane": "client",
+      "col": 4,
+      "type": "frontend",
+      "label": "Refresh rotation",
+      "sublabel": "reuse detection"
+    },
+    {
+      "id": "refreshgrant",
+      "lane": "identity",
+      "col": 4,
+      "type": "backend",
+      "label": "Refresh grant",
+      "sublabel": "rotate the refresh token"
+    },
+    {
+      "id": "call",
+      "lane": "server",
+      "col": 4,
+      "type": "backend",
+      "label": "API call",
+      "sublabel": "the SDK attaches the bearer"
+    },
+    {
+      "id": "decide",
+      "lane": "server",
+      "col": 5,
+      "type": "security",
+      "label": "Authorize",
+      "sublabel": "200 · 401 · 403"
+    },
+    {
+      "id": "forbidden",
+      "lane": "client",
+      "col": 5,
+      "type": "frontend",
+      "label": "Forbidden state",
+      "sublabel": "a screen state, not a crash"
+    }
+  ],
+  "edges": [
+    { "id": "a1", "from": "signin", "to": "authorize", "label": "open the system browser" },
+    { "id": "a2", "from": "authorize", "to": "grant", "label": "code + PKCE verifier" },
+    { "id": "a3", "from": "grant", "to": "store", "label": "write access + refresh" },
+    { "id": "a4", "from": "store", "to": "call", "label": "read the access token" },
+    { "id": "a5", "from": "call", "to": "decide", "label": "the server checks scope + role" },
+    { "id": "a6", "from": "decide", "to": "rotate", "label": "401 · expired", "variant": "dashed" },
+    { "id": "a7", "from": "rotate", "to": "refreshgrant", "label": "present the refresh token" },
+    { "id": "a8", "from": "refreshgrant", "to": "store", "label": "write the new pair" },
+    { "id": "a9", "from": "decide", "to": "forbidden", "label": "403 · not permitted", "variant": "security" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "The trust boundary",
+      "items": [
+        "the client is untrusted: game state, prices, payments and entitlements are server-authoritative, and authorization stays on the server — hiding a screen or a button is UX, not access control",
+        "auth uses the system browser (OIDC + PKCE) or the identity slice; the app never holds the password and the system browser is the only place it is typed",
+        "the deep link and the push payload are untrusted input: parse them against the route allowlist, validate every parameter, and never perform a state-changing action from a link"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Tokens live in the OS keystore",
+      "items": [
+        "TokenStore and SecretStore are ports; the keystore adapter is the only implementation — a token in AsyncStorage, MMKV, a log or the bundle is a finding",
+        "the SDK attaches the header; the View never reads the token and never imports the SDK — the View renders state and calls commands",
+        "clear user data on sign-out and tenant switch: a shared device is the default assumption"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Rotation and reuse detection",
+      "items": [
+        "refresh rotation with reuse detection: a reused refresh token is a signal, and the family is revoked rather than silently re-issued",
+        "the push token has its own lifecycle — register on login, refresh on change, revoke on logout — and the server dedupes tokens per user and device",
+        "a 403 is a stable forbidden state the screen renders; jailbreak or root is a server-side risk signal, never a client-side block"
+      ]
+    }
+  ]
+}

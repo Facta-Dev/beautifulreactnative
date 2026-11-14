@@ -1,0 +1,159 @@
+{
+  "schema_version": 3,
+  "diagram_type": "lifecycle",
+  "meta": {
+    "title": "beautifulreactnative — Runtime Lifecycle",
+    "quality_profile": "showcase",
+    "output": "runtime-lifecycle.lifecycle.html"
+  },
+  "mainPath": [
+    "boot",
+    "mount",
+    "steady"
+  ],
+  "states": [
+    {
+      "id": "boot",
+      "type": "start",
+      "label": "Cold start",
+      "sublabel": "Hermes bundle",
+      "step": "01",
+      "tag": "entry"
+    },
+    {
+      "id": "hydrate",
+      "type": "active",
+      "label": "Hydrate the stores",
+      "sublabel": "migrations · prefs",
+      "step": "02"
+    },
+    {
+      "id": "mount",
+      "type": "active",
+      "label": "Mount the routes",
+      "sublabel": "typed route table",
+      "step": "03"
+    },
+    {
+      "id": "gate",
+      "type": "decision",
+      "label": "Session gate",
+      "sublabel": "token? link queued",
+      "step": "04",
+      "tag": "gate"
+    },
+    {
+      "id": "steady",
+      "type": "success",
+      "label": "Steady state",
+      "sublabel": "every state rendered",
+      "step": "05",
+      "tag": "done"
+    },
+    {
+      "id": "offline",
+      "type": "waiting",
+      "label": "Offline",
+      "sublabel": "last good data",
+      "tag": "pause"
+    },
+    {
+      "id": "background",
+      "type": "active",
+      "label": "Background",
+      "sublabel": "drains the outbox",
+      "tag": "automatic"
+    },
+    {
+      "id": "settled",
+      "type": "success",
+      "label": "Settled",
+      "sublabel": "outbox drained",
+      "tag": "terminal"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "t1",
+      "from": "boot",
+      "to": "mount"
+    },
+    {
+      "id": "t1b",
+      "from": "boot",
+      "to": "hydrate",
+      "label": "cold start"
+    },
+    {
+      "id": "t1c",
+      "from": "hydrate",
+      "to": "mount",
+      "label": "stores hydrated"
+    },
+    {
+      "id": "t3",
+      "from": "mount",
+      "to": "gate",
+      "label": "no session"
+    },
+    {
+      "id": "t4",
+      "from": "gate",
+      "to": "steady",
+      "label": "signed in"
+    },
+    {
+      "id": "t4b",
+      "from": "mount",
+      "to": "steady"
+    },
+    {
+      "id": "t6",
+      "from": "steady",
+      "to": "offline",
+      "label": "the network is gone",
+      "variant": "dashed"
+    },
+    {
+      "id": "t7",
+      "from": "steady",
+      "to": "background",
+      "label": "the app is backgrounded"
+    },
+    {
+      "id": "t9",
+      "from": "offline",
+      "to": "steady",
+      "label": "the network returns"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "The startup rail",
+      "items": [
+        "New Architecture only (legacy removed in RN 0.82/0.84 and Expo SDK 55) and Hermes V1 as the default engine — nothing is designed around the old bridge",
+        "startup stays cheap: defer non-critical work, lazy-load heavy screens, keep the first screen light, and measure the cold start on a low-tier device",
+        "typed storage migrations run on startup and on the first read; a failed migration is a fatal boundary, not a half-hydrated app, and the typed route table is the source of truth — Expo Router is only the adapter"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Every state is designed",
+      "items": [
+        "a screen renders loading, empty, error, forbidden, offline and ready; the ViewModel maps the query to that union and a switch that misses a state does not compile",
+        "offline keeps the last good data beside the reason — it is a state, not an error, and the outbox keeps the pending change",
+        "a denied permission, a missing push token and a deleted resource are states too, never crashes; the forbidden state arrives as a stable 403 from the server"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Background, degradation, shutdown",
+      "items": [
+        "the outbox drains on reconnect, on foreground and from a background task, and it survives an app restart",
+        "the quality governor lowers texture size, 3D LOD, particles and animation when frame time or memory crosses a threshold and raises them again when the device recovers — it never changes business logic",
+        "sign-out and a tenant switch clear the user data, and sensitive screens are protected from the app switcher where the platform allows it"
+      ]
+    }
+  ]
+}

@@ -134,6 +134,26 @@ The unbreakable rules:
 4. Every screen renders every state, including offline.
 5. Authorization is server-side.
 
+## Architecture diagrams
+
+This repo ships eight [Archify](https://github.com/tt-a1i/archify) diagrams under
+[`docs/architecture/`](docs/architecture/README.md), each explorable as a standalone
+HTML page.
+
+| Diagram | What it shows |
+|---|---|
+| [Containers](docs/architecture/c4-containers.html) | The Expo binary, the system browser, the API, the push service and the platform stores |
+| [Layers & feature packs](docs/architecture/services-slices.architecture.html) | View → ViewModel → SDK → API, the ports, and the lint rule that pins each wall |
+| [Auth algorithm](docs/architecture/auth-algorithm.workflow.html) | OIDC + PKCE in the system browser, tokens in the OS keystore, server-side authorization |
+| [Outbox algorithm](docs/architecture/outbox-algorithm.workflow.html) | The offline outbox: enqueue, idempotency key, settle or roll back, drain |
+| [Auth sequence](docs/architecture/auth-sequence.sequence.html) | The sign-in chain from the user to the keystore and back |
+| [Outbox sequence](docs/architecture/outbox-sequence.sequence.html) | One mutation end to end, and the conflict branch |
+| [Dataflow](docs/architecture/database-dataflow.dataflow.html) | Where state goes: keystore, MMKV, the typed store, the query cache, the API |
+| [Runtime lifecycle](docs/architecture/runtime-lifecycle.lifecycle.html) | Cold start, hydration, the session gate, steady state and its branches |
+
+The `auth-*` and `outbox-*` roles are adapted to the real React Native mechanisms — the
+OS keystore and the offline outbox — and the index says so.
+
 ## The lints config
 
 [`lints/eslint.config.mjs`](lints/eslint.config.mjs) is a copy-in ESLint 9
@@ -186,6 +206,9 @@ scripts/
 tests/                         unit, contracts, integration, e2e
 examples/
   review-mobile-screen.md      a full worked review
+docs/
+  architecture/                eight Archify diagrams (C4, slices, auth,
+                               outbox, dataflow, lifecycle)
 ```
 
 ## Sources

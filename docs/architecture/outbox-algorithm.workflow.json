@@ -1,0 +1,149 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "beautifulreactnative — Offline Outbox Algorithm",
+    "quality_profile": "showcase",
+    "output": "outbox-algorithm.workflow.html"
+  },
+  "lanes": [
+    { "id": "viewmodel", "label": "ViewModel" },
+    { "id": "outbox", "label": "Local store" },
+    { "id": "sdk", "label": "SDK" },
+    { "id": "server", "label": "API" }
+  ],
+  "phases": [
+    { "id": "enqueue", "label": "Enqueue", "fromCol": 0, "toCol": 1 },
+    { "id": "send", "label": "Send + settle", "fromCol": 2, "toCol": 3, "variant": "emphasis" },
+    { "id": "reconcile", "label": "Reconcile", "fromCol": 4, "toCol": 5 }
+  ],
+  "mainPath": ["mutation", "tx", "send", "server", "settle", "reconcile"],
+  "nodes": [
+    {
+      "id": "mutation",
+      "lane": "viewmodel",
+      "col": 0,
+      "type": "backend",
+      "label": "Mutation",
+      "sublabel": "a ViewModel command"
+    },
+    {
+      "id": "tx",
+      "lane": "outbox",
+      "col": 1,
+      "type": "database",
+      "label": "One transaction",
+      "sublabel": "optimistic row + queued mutation"
+    },
+    {
+      "id": "send",
+      "lane": "sdk",
+      "col": 2,
+      "type": "backend",
+      "label": "Send",
+      "sublabel": "carries an idempotency key"
+    },
+    {
+      "id": "offline",
+      "lane": "viewmodel",
+      "col": 2,
+      "type": "frontend",
+      "label": "Offline",
+      "sublabel": "no network · stays queued"
+    },
+    {
+      "id": "server",
+      "lane": "server",
+      "col": 3,
+      "type": "external",
+      "label": "Server",
+      "sublabel": "dedupes by idempotency key"
+    },
+    {
+      "id": "settle",
+      "lane": "outbox",
+      "col": 4,
+      "type": "database",
+      "label": "Settle",
+      "sublabel": "write the server's answer"
+    },
+    {
+      "id": "rejected",
+      "lane": "sdk",
+      "col": 4,
+      "type": "security",
+      "label": "Rejected",
+      "sublabel": "409 · the server wins"
+    },
+    {
+      "id": "reconcile",
+      "lane": "viewmodel",
+      "col": 5,
+      "type": "frontend",
+      "label": "Reconcile",
+      "sublabel": "invalidate by prefix · render"
+    }
+  ],
+  "edges": [
+    { "id": "o1", "from": "mutation", "to": "tx", "label": "queue the change" },
+    {
+      "id": "o2",
+      "from": "tx",
+      "to": "send",
+      "label": "drain: reconnect · foreground · background task"
+    },
+    { "id": "o3", "from": "send", "to": "server", "label": "POST + Idempotency-Key" },
+    { "id": "o4", "from": "server", "to": "settle", "label": "2xx · canonical row" },
+    { "id": "o5", "from": "settle", "to": "reconcile", "label": "invalidate the query prefix" },
+    {
+      "id": "o6",
+      "from": "send",
+      "to": "offline",
+      "label": "network lost",
+      "variant": "dashed"
+    },
+    {
+      "id": "o7",
+      "from": "server",
+      "to": "rejected",
+      "label": "409 · conflict",
+      "variant": "security"
+    },
+    {
+      "id": "o8",
+      "from": "rejected",
+      "to": "reconcile",
+      "label": "restore the previous value · show why",
+      "variant": "security"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "The outbox, five steps",
+      "items": [
+        "1 · write the optimistic row and the queued mutation in one transaction; 2 · send with an idempotency key; 3 · on success write the server's answer and settle the row; 4 · on failure restore the previous value and show why; 5 · drain on reconnect, foreground and a background task",
+        "without steps 1 and 4 it is data loss with a spinner — the optimistic row is the visible promise, the rollback is the promise kept",
+        "the outbox is persisted and survives app restarts; a queued mutation that never drains is a visible defect, not a silent one"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "No broker, no server queue",
+      "items": [
+        "the queue is local state and the drain is a foreground or background task — there is no message bus, no server-side topic and no polling daemon to run",
+        "the write path is the ViewModel and the SDK; the View never calls the network, and a mutation never skips the queue to be fast",
+        "TanStack Query carries the server state — cache keys, retries, dedupe and background refresh — and the query cache is the last good data"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "The server wins a conflict",
+      "items": [
+        "the local pending change is rejected visibly, never silently dropped; a rejected mutation leaves the screen showing why",
+        "the idempotency key makes a retry safe — a drained mutation sent twice is one mutation at the server",
+        "invalidate by prefix after a mutation, never refetch the world; pagination is cursor-based so a list grows without loading everything"
+      ]
+    }
+  ]
+}

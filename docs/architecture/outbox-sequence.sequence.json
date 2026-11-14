@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "beautifulreactnative — Offline Outbox Sequence",
+    "quality_profile": "showcase",
+    "output": "outbox-sequence.sequence.html"
+  },
+  "participants": [
+    {
+      "id": "user",
+      "type": "external",
+      "label": "App user",
+      "sublabel": "archive an order"
+    },
+    {
+      "id": "vm",
+      "type": "frontend",
+      "label": "ViewModel",
+      "sublabel": "archive command"
+    },
+    {
+      "id": "outbox",
+      "type": "database",
+      "label": "Local store",
+      "sublabel": "pending row + queue"
+    },
+    {
+      "id": "sdk",
+      "type": "backend",
+      "label": "SDK",
+      "sublabel": "typed client · DTOs"
+    },
+    {
+      "id": "api",
+      "type": "external",
+      "label": "Backend API",
+      "sublabel": "server-authoritative"
+    }
+  ],
+  "segments": [
+    { "from": 160, "to": 290, "label": "Enqueue locally" },
+    { "from": 300, "to": 530, "label": "Drain — reconnect · foreground · background task" },
+    { "from": 538, "to": 670, "label": "Alternative — the server wins the conflict" }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "user",
+      "to": "vm",
+      "y": 170,
+      "label": "archive(orderId) — a ViewModel command"
+    },
+    {
+      "id": "m2",
+      "from": "vm",
+      "to": "outbox",
+      "y": 206,
+      "label": "one transaction: optimistic row + queued mutation",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m3",
+      "from": "outbox",
+      "to": "vm",
+      "y": 242,
+      "label": "pending row persisted",
+      "variant": "return"
+    },
+    {
+      "id": "m4",
+      "from": "vm",
+      "to": "user",
+      "y": 278,
+      "label": "render the pending row",
+      "variant": "return"
+    },
+    {
+      "id": "m5",
+      "from": "outbox",
+      "to": "sdk",
+      "y": 314,
+      "label": "next queued mutation · Idempotency-Key",
+      "note": "the drain triggers on reconnect, on foreground and from a background task"
+    },
+    {
+      "id": "m6",
+      "from": "sdk",
+      "to": "api",
+      "y": 372,
+      "label": "POST /orders/:id/archive"
+    },
+    {
+      "id": "m7",
+      "from": "api",
+      "to": "sdk",
+      "y": 408,
+      "label": "200 · canonical row",
+      "variant": "return"
+    },
+    {
+      "id": "m8",
+      "from": "sdk",
+      "to": "outbox",
+      "y": 444,
+      "label": "settle: write the server's answer"
+    },
+    {
+      "id": "m9",
+      "from": "outbox",
+      "to": "vm",
+      "y": 480,
+      "label": "settled · invalidate the query prefix",
+      "variant": "return"
+    },
+    {
+      "id": "m10",
+      "from": "vm",
+      "to": "user",
+      "y": 516,
+      "label": "render the server's answer",
+      "variant": "return"
+    },
+    {
+      "id": "m11",
+      "from": "api",
+      "to": "sdk",
+      "y": 552,
+      "label": "409 · the server wins the conflict",
+      "variant": "security"
+    },
+    {
+      "id": "m12",
+      "from": "sdk",
+      "to": "outbox",
+      "y": 588,
+      "label": "restore the previous value"
+    },
+    {
+      "id": "m13",
+      "from": "outbox",
+      "to": "vm",
+      "y": 624,
+      "label": "rejected — visible, never dropped",
+      "variant": "security"
+    },
+    {
+      "id": "m14",
+      "from": "vm",
+      "to": "user",
+      "y": 660,
+      "label": "show why the change was rejected",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    { "participant": "vm", "from": 164, "to": 500, "type": "frontend" },
+    { "participant": "outbox", "from": 200, "to": 260, "type": "database" },
+    { "participant": "outbox", "from": 308, "to": 330, "type": "database" },
+    { "participant": "outbox", "from": 438, "to": 490, "type": "database" },
+    { "participant": "sdk", "from": 308, "to": 460, "type": "backend" },
+    { "participant": "api", "from": 366, "to": 414, "type": "external" },
+    { "participant": "api", "from": 546, "to": 560, "type": "external" },
+    { "participant": "sdk", "from": 546, "to": 596, "type": "backend" },
+    { "participant": "outbox", "from": 582, "to": 632, "type": "database" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "One transaction, then a drain",
+      "items": [
+        "the optimistic row and the queued mutation are written in one transaction, so the UI promise and the pending work can never diverge",
+        "the outbox is persisted and survives app restarts; the drain runs on reconnect, on foreground and from a background task",
+        "the ViewModel owns the write; the View renders the pending row and never calls the network itself"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Settle or reject",
+      "items": [
+        "on success the server's answer is written and the row is settled, then the query prefix is invalidated — never refetch the world",
+        "on failure the previous value is restored and the screen shows why; without the rollback it is data loss with a spinner",
+        "the server wins a conflict: the local pending change is rejected visibly, never silently dropped"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Keys and fixtures",
+      "items": [
+        "every queued mutation carries an idempotency key, so a drained mutation sent twice is one mutation at the server",
+        "the outbox is unit-tested with valid and invalid fixtures, like the parser and the quality governor",
+        "the query cache is the last good data: offline is a visible state beside it, not a generic error"
+      ]
+    }
+  ]
+}
