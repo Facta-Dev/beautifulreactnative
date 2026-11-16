@@ -4,3 +4,8 @@ __pycache__/
 node_modules/
 dist/
 *.tsbuildinfo
+CLAUDE.local.md
+.claude/settings.local.json
+.claude/install-state.json
+.claude/backups/
+.claude/logs/
