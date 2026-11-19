@@ -16,6 +16,11 @@ description: >-
 
 # React Native best practices
 
+> Playbook set: start with [`PLAYBOOK_MASTER.md`](https://github.com/Facta-Dev/ai-coding-playbook/blob/main/PLAYBOOK_MASTER.md) —
+> the catalog, precedence and cross-playbook invariants — then
+> [`PLAYBOOK_FRONTEND_MOBILE.md`](https://github.com/Facta-Dev/ai-coding-playbook/blob/main/PLAYBOOK_FRONTEND_MOBILE.md). This skill is the runnable companion of that
+> contract.
+
 Distilled from the React Native/Expo documentation, the facta mobile handbook
 (`PLAYBOOK_FRONTEND_MOBILE.md`), and the performance guidance that keeps an app
 usable on the phones most people actually own. The digests live in
