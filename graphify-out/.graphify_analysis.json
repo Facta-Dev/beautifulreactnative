@@ -1,0 +1,1409 @@
+{
+  "communities": {
+    "0": [
+      "tests_contracts_test_examples_ledger",
+      "tests_contracts_test_examples_ledger_ledger_data",
+      "tests_contracts_test_examples_ledger_ledger_paths",
+      "tests_contracts_test_examples_ledger_ledger_skip_count",
+      "tests_contracts_test_examples_ledger_ledgeragrees",
+      "tests_contracts_test_examples_ledger_ledgeragrees_test_checker_skipped_count_equals_ledger",
+      "tests_contracts_test_examples_ledger_ledgershape",
+      "tests_contracts_test_examples_ledger_ledgershape_test_every_ledgered_path_exists_on_disk",
+      "tests_contracts_test_examples_ledger_ledgershape_test_every_skip_has_a_nonempty_reason",
+      "tests_contracts_test_examples_ledger_ledgershape_test_is_json_object_with_files_mapping",
+      "tests_contracts_test_examples_ledger_rationale_25",
+      "tests_contracts_test_examples_ledger_rationale_31",
+      "tests_contracts_test_examples_ledger_rationale_73",
+      "tests_integration_test_repo_gates_inproc",
+      "tests_integration_test_repo_gates_inproc_packagetests",
+      "tests_integration_test_repo_gates_inproc_packagetests_build",
+      "tests_integration_test_repo_gates_inproc_packagetests_setupclass",
+      "tests_integration_test_repo_gates_inproc_packagetests_test_package_holds_manifest_skills_and_icon",
+      "tests_integration_test_repo_gates_inproc_packagetests_test_package_is_reproducible",
+      "tests_integration_test_repo_gates_inproc_packagetests_test_package_leaves_out_evals",
+      "tests_integration_test_repo_gates_inproc_rationale_53",
+      "tests_integration_test_repo_gates_inproc_repogates",
+      "tests_integration_test_repo_gates_inproc_repogates_test_check_examples_zero_errors",
+      "tests_integration_test_repo_gates_inproc_repogates_test_check_skill_zero_errors",
+      "tests_support",
+      "tests_support_load_script",
+      "tests_support_rationale_1",
+      "tests_support_rationale_13",
+      "tests_unit_test_check_examples_unit",
+      "tests_unit_test_check_examples_unit_fallbacktest",
+      "tests_unit_test_check_examples_unit_fallbacktest_test_balanced_bash_quotes_pass",
+      "tests_unit_test_check_examples_unit_fallbacktest_test_balanced_block_is_quiet",
+      "tests_unit_test_check_examples_unit_fallbacktest_test_bash_quote_imbalance_is_reported",
+      "tests_unit_test_check_examples_unit_fallbacktest_test_string_with_brackets_does_not_confuse_the_scan",
+      "tests_unit_test_check_examples_unit_fallbacktest_test_unbalanced_ts_block_is_a_problem",
+      "tests_unit_test_check_examples_unit_fallbacktest_test_unterminated_string_is_reported",
+      "tests_unit_test_check_examples_unit_findblockstest",
+      "tests_unit_test_check_examples_unit_findblockstest_test_bash_blocks_are_extracted_for_quote_sanity",
+      "tests_unit_test_check_examples_unit_findblockstest_test_dedents_indented_blocks",
+      "tests_unit_test_check_examples_unit_findblockstest_test_finds_ts_and_bash_blocks",
+      "tests_unit_test_check_examples_unit_findblockstest_test_ignores_ts_fences_nested_in_other_blocks",
+      "tests_unit_test_check_examples_unit_findblockstest_test_skips_eval_fixtures",
+      "tests_unit_test_check_examples_unit_findblockstest_test_typescript_fences_count_as_ts",
+      "tests_unit_test_check_examples_unit_harnesstest",
+      "tests_unit_test_check_examples_unit_harnesstest_apply",
+      "tests_unit_test_check_examples_unit_harnesstest_test_block_spec_array_is_a_problem",
+      "tests_unit_test_check_examples_unit_harnesstest_test_first_line_mismatch_reports_drift_at_the_block",
+      "tests_unit_test_check_examples_unit_harnesstest_test_malformed_ledger_files_list_is_a_problem",
+      "tests_unit_test_check_examples_unit_harnesstest_test_skip_needs_a_reason",
+      "tests_unit_test_check_examples_unit_harnesstest_test_skip_with_reason_is_not_an_error",
+      "tests_unit_test_check_examples_unit_harnesstest_test_template_and_prelude_are_attached",
+      "tests_unit_test_check_examples_unit_harnesstest_test_template_without_code_slot_is_an_error",
+      "tests_unit_test_check_examples_unit_harnesstest_test_unknown_block_and_file_are_errors",
+      "tests_unit_test_check_examples_unit_mappingtest",
+      "tests_unit_test_check_examples_unit_mappingtest_test_each_fragment_becomes_a_module",
+      "tests_unit_test_check_examples_unit_mappingtest_test_harness_line_errors_name_the_harness",
+      "tests_unit_test_check_examples_unit_mappingtest_test_rendered_lines_map_back_to_markdown_and_harness",
+      "tests_unit_test_check_examples_unit_mappingtest_test_tsc_errors_map_to_markdown_lines",
+      "tests_unit_test_check_examples_unit_repotest",
+      "tests_unit_test_check_examples_unit_repotest_blocks",
+      "tests_unit_test_check_examples_unit_repotest_setup",
+      "tests_unit_test_check_examples_unit_repotest_teardown",
+      "tests_unit_test_check_skill_unit_checkskilltests_setupclass"
+    ],
+    "1": [
+      "tests_support_write",
+      "tests_unit_test_check_examples_unit_domainwalltest",
+      "tests_unit_test_check_examples_unit_domainwalltest_test_node_builtin_imports_stay_allowed",
+      "tests_unit_test_check_examples_unit_domainwalltest_test_stack_import_in_a_compiling_block_is_rejected",
+      "tests_unit_test_check_examples_unit_endtoendtest",
+      "tests_unit_test_check_examples_unit_endtoendtest_test_a_broken_example_reports_its_markdown_line",
+      "tests_unit_test_check_examples_unit_endtoendtest_test_a_fragment_compiles_with_its_template",
+      "tests_unit_test_check_examples_unit_endtoendtest_test_duplicate_names_across_blocks_do_not_collide",
+      "tests_unit_test_check_examples_unit_endtoendtest_test_require_toolchain_fails_loudly_without_tsc",
+      "tests_unit_test_check_examples_unit_repotest_harness",
+      "tests_unit_test_check_skill_unit",
+      "tests_unit_test_check_skill_unit_add_portable_plugin",
+      "tests_unit_test_check_skill_unit_build_valid_repo",
+      "tests_unit_test_check_skill_unit_checkskilltests",
+      "tests_unit_test_check_skill_unit_checkskilltests_assert_has_error",
+      "tests_unit_test_check_skill_unit_checkskilltests_run_root",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_bad_name",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_broken_link",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_broken_references_mention",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_case_name_must_match_folder",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_cli_help",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_empty_grader_body",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_gap_in_grader_numbers",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_invalid_semver",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_long_description",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_long_skill_body_warns",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_markdown_link_covers_reference",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_missing_frontmatter_key",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_missing_grader_frontmatter_key",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_missing_skill_description",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_name_must_match_folder",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_orphan_reference",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_output_format_and_json_flag",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_place_files_existing_target_ok",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_place_files_missing_target",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_plugin_name_mismatch",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_portable_display_name_too_long",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_portable_http_url_rejected",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_portable_icon_must_be_square",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_portable_missing_icon",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_portable_too_many_prompts",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_portable_unknown_top_level_key",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_portable_version_must_match",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_unknown_frontmatter_key",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_valid_fixture_repo_passes",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_valid_portable_plugin_passes",
+      "tests_unit_test_check_skill_unit_checkskilltests_test_version_mismatch",
+      "tests_unit_test_check_skill_unit_error_messages",
+      "tests_unit_test_check_skill_unit_formatted",
+      "tests_unit_test_check_skill_unit_png_header",
+      "tests_unit_test_check_skill_unit_portable_with",
+      "tests_unit_test_check_skill_unit_rationale_125"
+    ],
+    "2": [
+      "changelog",
+      "changelog_added",
+      "changelog_changelog",
+      "changelog_unreleased",
+      "contributing",
+      "contributing_contributing",
+      "contributing_good_first_contributions",
+      "contributing_license",
+      "contributing_making_a_change",
+      "contributing_style",
+      "contributing_the_one_rule_every_rule_needs_a_source",
+      "docs_architecture_readme",
+      "docs_architecture_readme_beautifulreactnative_architecture_diagrams",
+      "lints_readme",
+      "lints_readme_beautiful_react_native_lints",
+      "privacy",
+      "privacy_privacy_policy",
+      "readme",
+      "readme_a_worked_example",
+      "readme_agent_kit_claude_code",
+      "readme_any_agent",
+      "readme_architecture_diagrams",
+      "readme_beautiful_react_native",
+      "readme_claude_code",
+      "readme_contributing",
+      "readme_install",
+      "readme_license",
+      "readme_openai_codex_and_chatgpt",
+      "readme_repository_layout",
+      "readme_siblings",
+      "readme_sources",
+      "readme_the_architecture_contract",
+      "readme_the_lints_config",
+      "readme_the_playbooks",
+      "readme_what_it_does_not_do",
+      "readme_why",
+      "skills_reactnative_best_practices_references_mobile_architecture",
+      "skills_reactnative_best_practices_references_mobile_architecture_10_the_enforcement_map",
+      "skills_reactnative_best_practices_references_mobile_architecture_1_the_layers",
+      "skills_reactnative_best_practices_references_mobile_architecture_2_ports",
+      "skills_reactnative_best_practices_references_mobile_architecture_3_variants_and_feature_packs",
+      "skills_reactnative_best_practices_references_mobile_architecture_4_navigation",
+      "skills_reactnative_best_practices_references_mobile_architecture_5_state",
+      "skills_reactnative_best_practices_references_mobile_architecture_6_offline_and_sync",
+      "skills_reactnative_best_practices_references_mobile_architecture_7_device_tiers",
+      "skills_reactnative_best_practices_references_mobile_architecture_8_security",
+      "skills_reactnative_best_practices_references_mobile_architecture_9_testing_the_layers",
+      "skills_reactnative_best_practices_references_mobile_architecture_mobile_architecture_contract"
+    ],
+    "3": [
+      "scripts_check_skill",
+      "scripts_check_skill_check_repo",
+      "scripts_check_skill_checker",
+      "scripts_check_skill_checker_add",
+      "scripts_check_skill_checker_check",
+      "scripts_check_skill_checker_check_changelog",
+      "scripts_check_skill_checker_check_doc_links",
+      "scripts_check_skill_checker_check_eval_case",
+      "scripts_check_skill_checker_check_evals",
+      "scripts_check_skill_checker_check_grader_file",
+      "scripts_check_skill_checker_check_graders",
+      "scripts_check_skill_checker_check_openai_icon",
+      "scripts_check_skill_checker_check_openai_interface",
+      "scripts_check_skill_checker_check_orphans",
+      "scripts_check_skill_checker_check_place_files",
+      "scripts_check_skill_checker_check_plugin_files",
+      "scripts_check_skill_checker_check_portable_plugin",
+      "scripts_check_skill_checker_check_relative_url",
+      "scripts_check_skill_checker_check_skill",
+      "scripts_check_skill_checker_init",
+      "scripts_check_skill_checker_load_frontmatter",
+      "scripts_check_skill_checker_load_json",
+      "scripts_check_skill_checker_load_yaml",
+      "scripts_check_skill_checker_loc",
+      "scripts_check_skill_checker_read",
+      "scripts_check_skill_checker_reference_hit",
+      "scripts_check_skill_checker_skill_dirs",
+      "scripts_check_skill_fold_block",
+      "scripts_check_skill_format_problem",
+      "scripts_check_skill_is_relative",
+      "scripts_check_skill_json_key_line",
+      "scripts_check_skill_main",
+      "scripts_check_skill_normalize_url",
+      "scripts_check_skill_png_size",
+      "scripts_check_skill_problem",
+      "scripts_check_skill_problems_to_json",
+      "scripts_check_skill_py_path",
+      "scripts_check_skill_rationale_1145",
+      "scripts_check_skill_rel",
+      "scripts_check_skill_split_frontmatter",
+      "scripts_check_skill_strip_comment",
+      "scripts_check_skill_summary_line"
+    ],
+    "4": [
+      "scripts_check_examples",
+      "scripts_check_examples_apply_harness",
+      "scripts_check_examples_as_text",
+      "scripts_check_examples_block",
+      "scripts_check_examples_build_project",
+      "scripts_check_examples_check_brackets",
+      "scripts_check_examples_check_quotes",
+      "scripts_check_examples_check_repo",
+      "scripts_check_examples_doc_files",
+      "scripts_check_examples_find_blocks",
+      "scripts_check_examples_find_tsc",
+      "scripts_check_examples_first_code_line",
+      "scripts_check_examples_forbidden_module",
+      "scripts_check_examples_format_problem",
+      "scripts_check_examples_imported_modules",
+      "scripts_check_examples_load_harness",
+      "scripts_check_examples_main",
+      "scripts_check_examples_map_errors",
+      "scripts_check_examples_problem",
+      "scripts_check_examples_py_any",
+      "scripts_check_examples_py_path",
+      "scripts_check_examples_rationale_138",
+      "scripts_check_examples_rationale_185",
+      "scripts_check_examples_rationale_199",
+      "scripts_check_examples_rationale_274",
+      "scripts_check_examples_rationale_312",
+      "scripts_check_examples_rationale_339",
+      "scripts_check_examples_rationale_369",
+      "scripts_check_examples_rationale_424",
+      "scripts_check_examples_rationale_458",
+      "scripts_check_examples_rel",
+      "scripts_check_examples_render",
+      "scripts_check_examples_run_tsc",
+      "scripts_check_examples_summary_line"
+    ],
+    "5": [
+      "plugin",
+      "plugin_author",
+      "plugin_author_name",
+      "plugin_author_url",
+      "plugin_com_openai_interface",
+      "plugin_com_openai_publication",
+      "plugin_description",
+      "plugin_extensions",
+      "plugin_extensions_com_openai",
+      "plugin_homepage",
+      "plugin_interface_brandcolor",
+      "plugin_interface_capabilities",
+      "plugin_interface_category",
+      "plugin_interface_composericon",
+      "plugin_interface_defaultprompt",
+      "plugin_interface_developername",
+      "plugin_interface_displayname",
+      "plugin_interface_logo",
+      "plugin_interface_longdescription",
+      "plugin_interface_privacypolicyurl",
+      "plugin_interface_shortdescription",
+      "plugin_interface_supporturl",
+      "plugin_interface_websiteurl",
+      "plugin_keywords",
+      "plugin_license",
+      "plugin_name",
+      "plugin_publication_release_notes",
+      "plugin_repository",
+      "plugin_schema",
+      "plugin_version"
+    ],
+    "6": [
+      "tests_integration_test_checker_failure_paths",
+      "tests_integration_test_checker_failure_paths_brokentsblock",
+      "tests_integration_test_checker_failure_paths_brokentsblock_test_broken_ts_block_fails_check_examples",
+      "tests_integration_test_checker_failure_paths_brokentsblock_test_stack_import_wall_fails_without_a_toolchain",
+      "tests_integration_test_checker_failure_paths_copiedrepofailures",
+      "tests_integration_test_checker_failure_paths_copiedrepofailures_test_interface_bogus_key_rejected",
+      "tests_integration_test_checker_failure_paths_copiedrepofailures_test_malformed_harness_list_is_reported_not_crashed",
+      "tests_integration_test_checker_failure_paths_copiedrepofailures_test_nested_reference_compiled",
+      "tests_integration_test_checker_failure_paths_copiedrepofailures_test_place_files_escape_is_rejected",
+      "tests_integration_test_checker_failure_paths_deletedlints",
+      "tests_integration_test_checker_failure_paths_deletedlints_remove_pinned_rule",
+      "tests_integration_test_checker_failure_paths_deletedlints_test_deleted_pinned_rule_fails_check_lints",
+      "tests_integration_test_checker_failure_paths_deletedlints_test_replica_drift_fails_check_lints",
+      "tests_integration_test_checker_failure_paths_deletedlints_test_replica_drift_is_detectable_offline",
+      "tests_integration_test_checker_failure_paths_guardedrepocase",
+      "tests_integration_test_checker_failure_paths_guardedrepocase_setup",
+      "tests_integration_test_checker_failure_paths_guardedrepocase_verify_real_repo_untouched",
+      "tests_integration_test_checker_failure_paths_has_eslint",
+      "tests_integration_test_checker_failure_paths_has_tsc",
+      "tests_integration_test_checker_failure_paths_rationale_117",
+      "tests_integration_test_checker_failure_paths_rationale_144",
+      "tests_integration_test_checker_failure_paths_rationale_193",
+      "tests_integration_test_checker_failure_paths_rationale_53",
+      "tests_integration_test_checker_failure_paths_rationale_68",
+      "tests_integration_test_checker_failure_paths_rationale_80",
+      "tests_integration_test_checker_failure_paths_rationale_89",
+      "tests_integration_test_checker_failure_paths_run_bash",
+      "tests_integration_test_checker_failure_paths_run_checker",
+      "tests_integration_test_checker_failure_paths_sha256"
+    ],
+    "7": [
+      "claude_skills_graphify_skill",
+      "claude_skills_graphify_skill_for_graphify_add_and_watch",
+      "claude_skills_graphify_skill_for_graphify_query",
+      "claude_skills_graphify_skill_for_the_commit_hook_and_native_claude_md_integration",
+      "claude_skills_graphify_skill_for_update_and_cluster_only",
+      "claude_skills_graphify_skill_graphify",
+      "claude_skills_graphify_skill_honesty_rules",
+      "claude_skills_graphify_skill_interpreter_guard_for_subcommands",
+      "claude_skills_graphify_skill_part_a_structural_extraction_for_code_files",
+      "claude_skills_graphify_skill_part_b_semantic_extraction_parallel_subagents",
+      "claude_skills_graphify_skill_part_c_merge_ast_semantic_into_final_extraction",
+      "claude_skills_graphify_skill_step_0_github_repos_and_multi_path_merge_only_if_a_url_or_several_paths",
+      "claude_skills_graphify_skill_step_1_ensure_graphify_is_installed",
+      "claude_skills_graphify_skill_step_2_5_video_and_audio_only_if_video_files_detected",
+      "claude_skills_graphify_skill_step_2_detect_files",
+      "claude_skills_graphify_skill_step_3_extract_entities_and_relationships",
+      "claude_skills_graphify_skill_step_4_5_graph_health_check_read_only_integrity_gate",
+      "claude_skills_graphify_skill_step_4_build_graph_cluster_analyze_generate_outputs",
+      "claude_skills_graphify_skill_step_5_label_communities",
+      "claude_skills_graphify_skill_step_6_generate_obsidian_vault_opt_in_html",
+      "claude_skills_graphify_skill_step_9_save_manifest_update_cost_tracker_clean_up_and_report",
+      "claude_skills_graphify_skill_steps_6b_8_wiki_neo4j_falkordb_svg_graphml_mcp_benchmark_only_on_their_flags",
+      "claude_skills_graphify_skill_usage",
+      "claude_skills_graphify_skill_what_graphify_is_for",
+      "claude_skills_graphify_skill_what_you_must_do_when_invoked"
+    ],
+    "8": [
+      "exception",
+      "scripts_check_skill_parse_quoted",
+      "scripts_check_skill_parse_yaml",
+      "scripts_check_skill_py_any",
+      "scripts_check_skill_rationale_101",
+      "scripts_check_skill_split_flow",
+      "scripts_check_skill_yamlerror",
+      "scripts_check_skill_yamlerror_init",
+      "scripts_check_skill_yamlparser",
+      "scripts_check_skill_yamlparser_indent",
+      "scripts_check_skill_yamlparser_init",
+      "scripts_check_skill_yamlparser_is_empty",
+      "scripts_check_skill_yamlparser_parse",
+      "scripts_check_skill_yamlparser_parse_block",
+      "scripts_check_skill_yamlparser_parse_flow_map",
+      "scripts_check_skill_yamlparser_parse_flow_seq",
+      "scripts_check_skill_yamlparser_parse_map",
+      "scripts_check_skill_yamlparser_parse_scalar",
+      "scripts_check_skill_yamlparser_parse_seq",
+      "scripts_check_skill_yamlparser_parse_value",
+      "scripts_check_skill_yamlparser_skip_empty",
+      "scripts_check_skill_yamlparser_split_key"
+    ],
+    "9": [
+      "tests_contracts_test_lints_contract",
+      "tests_contracts_test_lints_contract_configpairing",
+      "tests_contracts_test_lints_contract_configpairing_test_pinned_rules_are_exactly_the_explicit_config",
+      "tests_contracts_test_lints_contract_configpairing_test_replica_is_byte_identical_to_the_drop_in",
+      "tests_contracts_test_lints_contract_explicit_rules",
+      "tests_contracts_test_lints_contract_gatescript",
+      "tests_contracts_test_lints_contract_gatescript_setup",
+      "tests_contracts_test_lints_contract_gatescript_test_a_non_json_report_is_an_explicit_error",
+      "tests_contracts_test_lints_contract_gatescript_test_every_tool_run_is_bounded_by_a_timeout",
+      "tests_contracts_test_lints_contract_gatescript_test_gate_exists_with_markers_and_identity",
+      "tests_contracts_test_lints_contract_gatescript_test_stderr_is_surfaced",
+      "tests_contracts_test_lints_contract_harnesscoverage",
+      "tests_contracts_test_lints_contract_harnesscoverage_test_every_pinned_rule_has_a_marker",
+      "tests_contracts_test_lints_contract_harnesscoverage_test_markers_are_all_pinned_rules",
+      "tests_contracts_test_lints_contract_harnesscoverage_test_silencing_rules_are_pinned",
+      "tests_contracts_test_lints_contract_harnesscoverage_test_the_io_wall_is_among_the_pinned_rules",
+      "tests_contracts_test_lints_contract_marker_names",
+      "tests_contracts_test_lints_contract_rationale_114",
+      "tests_contracts_test_lints_contract_rationale_57"
+    ],
+    "10": [
+      "skills_reactnative_best_practices_skill",
+      "skills_reactnative_best_practices_skill_10_storage_and_secrets",
+      "skills_reactnative_best_practices_skill_11_security",
+      "skills_reactnative_best_practices_skill_12_accessibility_and_i18n",
+      "skills_reactnative_best_practices_skill_13_performance",
+      "skills_reactnative_best_practices_skill_14_testing",
+      "skills_reactnative_best_practices_skill_15_cross_skill_contract",
+      "skills_reactnative_best_practices_skill_1_mindset",
+      "skills_reactnative_best_practices_skill_2_before_you_hand_back_code",
+      "skills_reactnative_best_practices_skill_3_platform_facts",
+      "skills_reactnative_best_practices_skill_4_architecture_view_viewmodel_sdk",
+      "skills_reactnative_best_practices_skill_5_device_tiers_and_the_quality_governor",
+      "skills_reactnative_best_practices_skill_6_navigation_and_deep_links",
+      "skills_reactnative_best_practices_skill_7_server_state_offline_and_outbox",
+      "skills_reactnative_best_practices_skill_8_lists_images_2d_and_3d",
+      "skills_reactnative_best_practices_skill_9_push_notifications",
+      "skills_reactnative_best_practices_skill_react_native_best_practices",
+      "skills_reactnative_best_practices_skill_sources"
+    ],
+    "11": [
+      "skills_reactnative_review_skill",
+      "skills_reactnative_review_skill_1_report_shape",
+      "skills_reactnative_review_skill_2_categories_in_ranking_order",
+      "skills_reactnative_review_skill_3_waived_gates",
+      "skills_reactnative_review_skill_4_how_to_review",
+      "skills_reactnative_review_skill_5_worked_example",
+      "skills_reactnative_review_skill_6_cross_skill_contract",
+      "skills_reactnative_review_skill_accessibility_and_i18n",
+      "skills_reactnative_review_skill_architecture_contracts_always_must_fix_ranked_first",
+      "skills_reactnative_review_skill_device_tiers_and_performance",
+      "skills_reactnative_review_skill_navigation_and_deep_links",
+      "skills_reactnative_review_skill_push",
+      "skills_reactnative_review_skill_react_native_review",
+      "skills_reactnative_review_skill_security",
+      "skills_reactnative_review_skill_server_state_offline_and_outbox",
+      "skills_reactnative_review_skill_tests"
+    ],
+    "12": [
+      "lints_check_package",
+      "lints_check_package_description",
+      "lints_check_package_devdependencies",
+      "lints_check_package_devdependencies_eslint",
+      "lints_check_package_devdependencies_eslint_community_eslint_plugin_eslint_comments",
+      "lints_check_package_devdependencies_eslint_js",
+      "lints_check_package_devdependencies_eslint_plugin_react_hooks",
+      "lints_check_package_devdependencies_typescript",
+      "lints_check_package_devdependencies_typescript_eslint",
+      "lints_check_package_name",
+      "lints_check_package_private",
+      "lints_check_package_scripts",
+      "lints_check_package_scripts_check",
+      "lints_check_package_type",
+      "lints_check_package_version"
+    ],
+    "13": [
+      "lints_check_tsconfig",
+      "lints_check_tsconfig_compileroptions",
+      "lints_check_tsconfig_compileroptions_baseurl",
+      "lints_check_tsconfig_compileroptions_lib",
+      "lints_check_tsconfig_compileroptions_module",
+      "lints_check_tsconfig_compileroptions_moduleresolution",
+      "lints_check_tsconfig_compileroptions_noemit",
+      "lints_check_tsconfig_compileroptions_nouncheckedindexedaccess",
+      "lints_check_tsconfig_compileroptions_paths",
+      "lints_check_tsconfig_compileroptions_skiplibcheck",
+      "lints_check_tsconfig_compileroptions_strict",
+      "lints_check_tsconfig_compileroptions_target",
+      "lints_check_tsconfig_include",
+      "lints_check_tsconfig_paths",
+      "lints_check_tsconfig_paths_react_native"
+    ],
+    "14": [
+      "tests_contracts_test_ci_gates",
+      "tests_contracts_test_ci_gates_checkersteps",
+      "tests_contracts_test_ci_gates_checkersteps_test_check_examples_step_present",
+      "tests_contracts_test_ci_gates_checkersteps_test_check_lints_step_present",
+      "tests_contracts_test_ci_gates_checkersteps_test_check_skill_step_present",
+      "tests_contracts_test_ci_gates_checkersteps_test_examples_gate_never_silently_downgrades",
+      "tests_contracts_test_ci_gates_checkersteps_test_jobs_present",
+      "tests_contracts_test_ci_gates_checkersteps_test_node_toolchain_pin_present",
+      "tests_contracts_test_ci_gates_rationale_21",
+      "tests_contracts_test_ci_gates_rationale_45",
+      "tests_contracts_test_ci_gates_testsjob",
+      "tests_contracts_test_ci_gates_testsjob_test_tests_job_discovers_the_whole_suite",
+      "tests_contracts_test_ci_gates_testsjob_test_tests_job_pins_the_node_toolchain",
+      "tests_contracts_test_ci_gates_testsjob_test_tests_job_present",
+      "tests_contracts_test_ci_gates_workflow_text"
+    ],
+    "15": [
+      "skills_reactnative_best_practices_references_react_native",
+      "skills_reactnative_best_practices_references_react_native_10_testing",
+      "skills_reactnative_best_practices_references_react_native_1_runtime",
+      "skills_reactnative_best_practices_references_react_native_2_device_tiers",
+      "skills_reactnative_best_practices_references_react_native_3_lists_and_images",
+      "skills_reactnative_best_practices_references_react_native_4_storage",
+      "skills_reactnative_best_practices_references_react_native_5_push",
+      "skills_reactnative_best_practices_references_react_native_6_navigation_and_deep_links",
+      "skills_reactnative_best_practices_references_react_native_7_offline_and_background",
+      "skills_reactnative_best_practices_references_react_native_8_3d_and_scene_engines",
+      "skills_reactnative_best_practices_references_react_native_9_release_and_updates",
+      "skills_reactnative_best_practices_references_react_native_react_native_platform_digest"
+    ],
+    "16": [
+      "skills_reactnative_best_practices_references_react_native_patterns",
+      "skills_reactnative_best_practices_references_react_native_patterns_10_performance_patterns",
+      "skills_reactnative_best_practices_references_react_native_patterns_1_the_viewmodel_hook",
+      "skills_reactnative_best_practices_references_react_native_patterns_2_the_five_states",
+      "skills_reactnative_best_practices_references_react_native_patterns_3_query_keys",
+      "skills_reactnative_best_practices_references_react_native_patterns_4_the_outbox",
+      "skills_reactnative_best_practices_references_react_native_patterns_5_the_deep_link_parser",
+      "skills_reactnative_best_practices_references_react_native_patterns_6_the_quality_governor",
+      "skills_reactnative_best_practices_references_react_native_patterns_7_the_sceneengine_port",
+      "skills_reactnative_best_practices_references_react_native_patterns_8_push_tap",
+      "skills_reactnative_best_practices_references_react_native_patterns_9_secure_storage",
+      "skills_reactnative_best_practices_references_react_native_patterns_react_native_patterns"
+    ],
+    "17": [
+      "tests_contracts_test_skill_wording",
+      "tests_contracts_test_skill_wording_bestpractices",
+      "tests_contracts_test_skill_wording_bestpractices_test_names_the_layer_walls",
+      "tests_contracts_test_skill_wording_bestpractices_test_points_at_review_as_the_critic",
+      "tests_contracts_test_skill_wording_bestpractices_test_silencing_prohibition_names_both_tokens",
+      "tests_contracts_test_skill_wording_bestpractices_test_unbreakable_clause_present",
+      "tests_contracts_test_skill_wording_bp_body",
+      "tests_contracts_test_skill_wording_reviewskill",
+      "tests_contracts_test_skill_wording_reviewskill_test_architecture_category_ranks_first_as_must_fix",
+      "tests_contracts_test_skill_wording_reviewskill_test_waiver_detection_clause",
+      "tests_contracts_test_skill_wording_rv_body"
+    ],
+    "18": [
+      "examples_review_mobile_screen",
+      "examples_review_mobile_screen_a_worked_review_the_orders_screen",
+      "examples_review_mobile_screen_must_fix",
+      "examples_review_mobile_screen_should_fix",
+      "examples_review_mobile_screen_the_fixed_module",
+      "examples_review_mobile_screen_the_module_under_review",
+      "examples_review_mobile_screen_the_report",
+      "examples_review_mobile_screen_verdict",
+      "examples_review_mobile_screen_waived_gates",
+      "examples_review_mobile_screen_what_changed_and_why_it_matters"
+    ],
+    "19": [
+      "claude_skills_graphify_references_exports",
+      "claude_skills_graphify_references_exports_graphify_reference_extra_exports_and_benchmark",
+      "claude_skills_graphify_references_exports_step_6b_wiki_only_if_wiki_flag",
+      "claude_skills_graphify_references_exports_step_7_neo4j_export_only_if_neo4j_or_neo4j_push_flag",
+      "claude_skills_graphify_references_exports_step_7a_falkordb_export_only_if_falkordb_or_falkordb_push_flag",
+      "claude_skills_graphify_references_exports_step_7b_svg_export_only_if_svg_flag",
+      "claude_skills_graphify_references_exports_step_7c_graphml_export_only_if_graphml_flag",
+      "claude_skills_graphify_references_exports_step_7d_mcp_server_only_if_mcp_flag",
+      "claude_skills_graphify_references_exports_step_8_token_reduction_benchmark_only_if_total_words_5000"
+    ],
+    "20": [
+      "skills_reactnative_best_practices_references_typescript_strict",
+      "skills_reactnative_best_practices_references_typescript_strict_1_the_strict_set",
+      "skills_reactnative_best_practices_references_typescript_strict_2_screen_states",
+      "skills_reactnative_best_practices_references_typescript_strict_3_branded_ids",
+      "skills_reactnative_best_practices_references_typescript_strict_4_result_types",
+      "skills_reactnative_best_practices_references_typescript_strict_5_boundary_types",
+      "skills_reactnative_best_practices_references_typescript_strict_6_async_discipline",
+      "skills_reactnative_best_practices_references_typescript_strict_7_type_level_review_questions",
+      "skills_reactnative_best_practices_references_typescript_strict_typescript_strict_for_react_native"
+    ],
+    "21": [
+      "skills_reactnative_port_skill",
+      "skills_reactnative_port_skill_1_the_order_of_work",
+      "skills_reactnative_port_skill_2_web_react_react_native_mapping",
+      "skills_reactnative_port_skill_3_bare_rn_expo_new_architecture",
+      "skills_reactnative_port_skill_4_native_screen_android_ios_react_native",
+      "skills_reactnative_port_skill_5_behavior_parity_checklist",
+      "skills_reactnative_port_skill_6_what_not_to_do",
+      "skills_reactnative_port_skill_7_cross_skill_contract",
+      "skills_reactnative_port_skill_react_native_port"
+    ],
+    "22": [
+      "tests_contracts_test_plugin_manifest",
+      "tests_contracts_test_plugin_manifest_load",
+      "tests_contracts_test_plugin_manifest_manifestpairing",
+      "tests_contracts_test_plugin_manifest_manifestpairing_test_marketplaces_name_the_plugin",
+      "tests_contracts_test_plugin_manifest_manifestpairing_test_root_and_claude_manifests_agree_on_name_version",
+      "tests_contracts_test_plugin_manifest_manifestpairing_test_schema_pin",
+      "tests_contracts_test_plugin_manifest_manifestpairing_test_skills_list_matches_folders_both_directions",
+      "tests_contracts_test_plugin_manifest_py_path",
+      "tests_contracts_test_plugin_manifest_skill_dirs"
+    ],
+    "23": [
+      "tests_e2e_test_ci_jobs",
+      "tests_e2e_test_ci_jobs_cijobs",
+      "tests_e2e_test_ci_jobs_cijobs_test_check_skill_job_green",
+      "tests_e2e_test_ci_jobs_cijobs_test_examples_job_green",
+      "tests_e2e_test_ci_jobs_cijobs_test_lints_job_green",
+      "tests_e2e_test_ci_jobs_cijobs_test_unittest_gate_green",
+      "tests_e2e_test_ci_jobs_has_eslint",
+      "tests_e2e_test_ci_jobs_run_ci"
+    ],
+    "24": [
+      "claude_agents_client_mobile_performance_reviewer",
+      "claude_agents_client_mobile_performance_reviewer_app_mobile_performance_reviewer",
+      "claude_agents_client_mobile_performance_reviewer_core_mission",
+      "claude_agents_client_mobile_performance_reviewer_expertise_areas",
+      "claude_agents_client_mobile_performance_reviewer_guiding_principles",
+      "claude_agents_client_mobile_performance_reviewer_output_format",
+      "claude_agents_client_mobile_performance_reviewer_quality_standards"
+    ],
+    "25": [
+      "claude_agents_client_mobile_platform_reviewer",
+      "claude_agents_client_mobile_platform_reviewer_app_mobile_platform_reviewer",
+      "claude_agents_client_mobile_platform_reviewer_core_mission",
+      "claude_agents_client_mobile_platform_reviewer_expertise_areas",
+      "claude_agents_client_mobile_platform_reviewer_guiding_principles",
+      "claude_agents_client_mobile_platform_reviewer_output_format",
+      "claude_agents_client_mobile_platform_reviewer_quality_standards"
+    ],
+    "26": [
+      "claude_agents_client_react_native_reviewer",
+      "claude_agents_client_react_native_reviewer_app_react_native_reviewer",
+      "claude_agents_client_react_native_reviewer_core_mission",
+      "claude_agents_client_react_native_reviewer_expertise_areas",
+      "claude_agents_client_react_native_reviewer_guiding_principles",
+      "claude_agents_client_react_native_reviewer_output_format",
+      "claude_agents_client_react_native_reviewer_quality_standards"
+    ],
+    "27": [
+      "claude_agents_core_architect",
+      "claude_agents_core_architect_app_architect",
+      "claude_agents_core_architect_core_mission",
+      "claude_agents_core_architect_expertise_areas",
+      "claude_agents_core_architect_guiding_principles",
+      "claude_agents_core_architect_output_format",
+      "claude_agents_core_architect_quality_standards"
+    ],
+    "28": [
+      "claude_agents_core_build_resolver",
+      "claude_agents_core_build_resolver_app_build_resolver",
+      "claude_agents_core_build_resolver_core_mission",
+      "claude_agents_core_build_resolver_expertise_areas",
+      "claude_agents_core_build_resolver_guiding_principles",
+      "claude_agents_core_build_resolver_output_format",
+      "claude_agents_core_build_resolver_quality_standards"
+    ],
+    "29": [
+      "claude_agents_core_code_explorer",
+      "claude_agents_core_code_explorer_app_code_explorer",
+      "claude_agents_core_code_explorer_core_mission",
+      "claude_agents_core_code_explorer_expertise_areas",
+      "claude_agents_core_code_explorer_guiding_principles",
+      "claude_agents_core_code_explorer_output_format",
+      "claude_agents_core_code_explorer_quality_standards"
+    ],
+    "30": [
+      "claude_agents_core_code_reviewer",
+      "claude_agents_core_code_reviewer_app_code_reviewer",
+      "claude_agents_core_code_reviewer_core_mission",
+      "claude_agents_core_code_reviewer_expertise_areas",
+      "claude_agents_core_code_reviewer_guiding_principles",
+      "claude_agents_core_code_reviewer_output_format",
+      "claude_agents_core_code_reviewer_quality_standards"
+    ],
+    "31": [
+      "claude_agents_core_planner",
+      "claude_agents_core_planner_app_planner",
+      "claude_agents_core_planner_core_mission",
+      "claude_agents_core_planner_expertise_areas",
+      "claude_agents_core_planner_guiding_principles",
+      "claude_agents_core_planner_output_format",
+      "claude_agents_core_planner_quality_standards"
+    ],
+    "32": [
+      "claude_agents_core_tdd_guide",
+      "claude_agents_core_tdd_guide_app_tdd_guide",
+      "claude_agents_core_tdd_guide_core_mission",
+      "claude_agents_core_tdd_guide_expertise_areas",
+      "claude_agents_core_tdd_guide_guiding_principles",
+      "claude_agents_core_tdd_guide_output_format",
+      "claude_agents_core_tdd_guide_quality_standards"
+    ],
+    "33": [
+      "claude_agents_security_mobile_security_reviewer",
+      "claude_agents_security_mobile_security_reviewer_app_mobile_security_reviewer",
+      "claude_agents_security_mobile_security_reviewer_core_mission",
+      "claude_agents_security_mobile_security_reviewer_expertise_areas",
+      "claude_agents_security_mobile_security_reviewer_guiding_principles",
+      "claude_agents_security_mobile_security_reviewer_output_format",
+      "claude_agents_security_mobile_security_reviewer_quality_standards"
+    ],
+    "34": [
+      "claude_agents_testing_test_author",
+      "claude_agents_testing_test_author_app_test_author",
+      "claude_agents_testing_test_author_core_mission",
+      "claude_agents_testing_test_author_expertise_areas",
+      "claude_agents_testing_test_author_guiding_principles",
+      "claude_agents_testing_test_author_output_format",
+      "claude_agents_testing_test_author_quality_standards"
+    ],
+    "35": [
+      "claude_skills_add_port_skill",
+      "claude_skills_add_port_skill_app_add_port_skill",
+      "claude_skills_add_port_skill_core_principles",
+      "claude_skills_add_port_skill_output_format",
+      "claude_skills_add_port_skill_research_references",
+      "claude_skills_add_port_skill_rules",
+      "claude_skills_add_port_skill_when_to_activate"
+    ],
+    "36": [
+      "claude_skills_add_route_skill",
+      "claude_skills_add_route_skill_app_add_route_skill",
+      "claude_skills_add_route_skill_core_principles",
+      "claude_skills_add_route_skill_output_format",
+      "claude_skills_add_route_skill_research_references",
+      "claude_skills_add_route_skill_rules",
+      "claude_skills_add_route_skill_when_to_activate"
+    ],
+    "37": [
+      "claude_skills_add_screen_skill",
+      "claude_skills_add_screen_skill_app_add_screen_skill",
+      "claude_skills_add_screen_skill_core_principles",
+      "claude_skills_add_screen_skill_output_format",
+      "claude_skills_add_screen_skill_research_references",
+      "claude_skills_add_screen_skill_rules",
+      "claude_skills_add_screen_skill_when_to_activate"
+    ],
+    "38": [
+      "claude_skills_add_slice_skill",
+      "claude_skills_add_slice_skill_app_add_slice_skill",
+      "claude_skills_add_slice_skill_core_principles",
+      "claude_skills_add_slice_skill_output_format",
+      "claude_skills_add_slice_skill_research_references",
+      "claude_skills_add_slice_skill_rules",
+      "claude_skills_add_slice_skill_when_to_activate"
+    ],
+    "39": [
+      "claude_skills_claim_check_skill",
+      "claude_skills_claim_check_skill_app_claim_check_skill",
+      "claude_skills_claim_check_skill_core_principles",
+      "claude_skills_claim_check_skill_output_format",
+      "claude_skills_claim_check_skill_research_references",
+      "claude_skills_claim_check_skill_rules",
+      "claude_skills_claim_check_skill_when_to_activate"
+    ],
+    "40": [
+      "claude_skills_clean_room_rebuild_skill",
+      "claude_skills_clean_room_rebuild_skill_app_clean_room_rebuild_skill",
+      "claude_skills_clean_room_rebuild_skill_core_principles",
+      "claude_skills_clean_room_rebuild_skill_output_format",
+      "claude_skills_clean_room_rebuild_skill_research_references",
+      "claude_skills_clean_room_rebuild_skill_rules",
+      "claude_skills_clean_room_rebuild_skill_when_to_activate"
+    ],
+    "41": [
+      "claude_skills_corpus_retrieval_skill",
+      "claude_skills_corpus_retrieval_skill_app_corpus_retrieval_skill",
+      "claude_skills_corpus_retrieval_skill_core_principles",
+      "claude_skills_corpus_retrieval_skill_output_format",
+      "claude_skills_corpus_retrieval_skill_research_references",
+      "claude_skills_corpus_retrieval_skill_rules",
+      "claude_skills_corpus_retrieval_skill_when_to_activate"
+    ],
+    "42": [
+      "claude_skills_diagnosing_bugs_skill",
+      "claude_skills_diagnosing_bugs_skill_app_diagnosing_bugs_skill",
+      "claude_skills_diagnosing_bugs_skill_core_principles",
+      "claude_skills_diagnosing_bugs_skill_output_format",
+      "claude_skills_diagnosing_bugs_skill_research_references",
+      "claude_skills_diagnosing_bugs_skill_rules",
+      "claude_skills_diagnosing_bugs_skill_when_to_activate"
+    ],
+    "43": [
+      "claude_skills_domain_modeling_skill",
+      "claude_skills_domain_modeling_skill_app_domain_modeling_skill",
+      "claude_skills_domain_modeling_skill_core_principles",
+      "claude_skills_domain_modeling_skill_output_format",
+      "claude_skills_domain_modeling_skill_research_references",
+      "claude_skills_domain_modeling_skill_rules",
+      "claude_skills_domain_modeling_skill_when_to_activate"
+    ],
+    "44": [
+      "claude_skills_grilling_skill",
+      "claude_skills_grilling_skill_app_grilling_skill",
+      "claude_skills_grilling_skill_core_principles",
+      "claude_skills_grilling_skill_output_format",
+      "claude_skills_grilling_skill_research_references",
+      "claude_skills_grilling_skill_rules",
+      "claude_skills_grilling_skill_when_to_activate"
+    ],
+    "45": [
+      "claude_skills_learn_skill",
+      "claude_skills_learn_skill_app_learn_skill",
+      "claude_skills_learn_skill_core_principles",
+      "claude_skills_learn_skill_output_format",
+      "claude_skills_learn_skill_research_references",
+      "claude_skills_learn_skill_rules",
+      "claude_skills_learn_skill_when_to_activate"
+    ],
+    "46": [
+      "claude_skills_plan_skill",
+      "claude_skills_plan_skill_app_plan_skill",
+      "claude_skills_plan_skill_core_principles",
+      "claude_skills_plan_skill_output_format",
+      "claude_skills_plan_skill_research_references",
+      "claude_skills_plan_skill_rules",
+      "claude_skills_plan_skill_when_to_activate"
+    ],
+    "47": [
+      "claude_skills_research_skill",
+      "claude_skills_research_skill_app_research_skill",
+      "claude_skills_research_skill_core_principles",
+      "claude_skills_research_skill_output_format",
+      "claude_skills_research_skill_research_references",
+      "claude_skills_research_skill_rules",
+      "claude_skills_research_skill_when_to_activate"
+    ],
+    "48": [
+      "claude_skills_review_skill",
+      "claude_skills_review_skill_app_review_skill",
+      "claude_skills_review_skill_core_principles",
+      "claude_skills_review_skill_output_format",
+      "claude_skills_review_skill_research_references",
+      "claude_skills_review_skill_rules",
+      "claude_skills_review_skill_when_to_activate"
+    ],
+    "49": [
+      "claude_skills_ship_skill",
+      "claude_skills_ship_skill_app_ship_skill",
+      "claude_skills_ship_skill_core_principles",
+      "claude_skills_ship_skill_output_format",
+      "claude_skills_ship_skill_research_references",
+      "claude_skills_ship_skill_rules",
+      "claude_skills_ship_skill_when_to_activate"
+    ],
+    "50": [
+      "claude_skills_spec_skill",
+      "claude_skills_spec_skill_app_spec_skill",
+      "claude_skills_spec_skill_core_principles",
+      "claude_skills_spec_skill_output_format",
+      "claude_skills_spec_skill_research_references",
+      "claude_skills_spec_skill_rules",
+      "claude_skills_spec_skill_when_to_activate"
+    ],
+    "51": [
+      "claude_skills_tdd_skill",
+      "claude_skills_tdd_skill_app_tdd_skill",
+      "claude_skills_tdd_skill_core_principles",
+      "claude_skills_tdd_skill_output_format",
+      "claude_skills_tdd_skill_research_references",
+      "claude_skills_tdd_skill_rules",
+      "claude_skills_tdd_skill_when_to_activate"
+    ],
+    "52": [
+      "claude_skills_verified_status_skill",
+      "claude_skills_verified_status_skill_app_verified_status_skill",
+      "claude_skills_verified_status_skill_core_principles",
+      "claude_skills_verified_status_skill_output_format",
+      "claude_skills_verified_status_skill_research_references",
+      "claude_skills_verified_status_skill_rules",
+      "claude_skills_verified_status_skill_when_to_activate"
+    ],
+    "53": [
+      "claude_skills_visual_review_skill",
+      "claude_skills_visual_review_skill_app_visual_review_skill",
+      "claude_skills_visual_review_skill_core_principles",
+      "claude_skills_visual_review_skill_output_format",
+      "claude_skills_visual_review_skill_research_references",
+      "claude_skills_visual_review_skill_rules",
+      "claude_skills_visual_review_skill_when_to_activate"
+    ],
+    "54": [
+      "claude_skills_graphify_references_query",
+      "claude_skills_graphify_references_query_for_graphify_explain",
+      "claude_skills_graphify_references_query_for_graphify_path",
+      "claude_skills_graphify_references_query_graphify_reference_query_path_explain",
+      "claude_skills_graphify_references_query_step_0_constrained_query_expansion_required_before_traversal",
+      "claude_skills_graphify_references_query_step_1_traversal"
+    ],
+    "55": [
+      "scripts_package_openai_plugin",
+      "scripts_package_openai_plugin_build",
+      "scripts_package_openai_plugin_main",
+      "scripts_package_openai_plugin_package_files",
+      "scripts_package_openai_plugin_py_path",
+      "scripts_package_openai_plugin_rationale_30"
+    ],
+    "56": [
+      "lints_check_src_hooks",
+      "lints_check_src_hooks_conditional",
+      "lints_check_src_hooks_deps",
+      "lints_check_src_hooks_useeffect",
+      "lints_check_src_hooks_usestate"
+    ],
+    "57": [
+      "claude",
+      "claude_beautifulreactnative_agent_instructions",
+      "claude_graphify",
+      "claude_model_routing_claude_code_ollama"
+    ],
+    "58": [
+      "claude_skills_graphify_references_add_watch",
+      "claude_skills_graphify_references_add_watch_for_graphify_add",
+      "claude_skills_graphify_references_add_watch_for_watch",
+      "claude_skills_graphify_references_add_watch_graphify_reference_add_a_url_and_watch_a_folder"
+    ],
+    "59": [
+      "claude_skills_graphify_references_hooks",
+      "claude_skills_graphify_references_hooks_for_git_commit_hook",
+      "claude_skills_graphify_references_hooks_for_native_claude_md_integration",
+      "claude_skills_graphify_references_hooks_graphify_reference_commit_hook_and_native_claude_md_integration"
+    ],
+    "60": [
+      "claude_skills_graphify_references_update",
+      "claude_skills_graphify_references_update_for_cluster_only",
+      "claude_skills_graphify_references_update_for_update_incremental_re_extraction",
+      "claude_skills_graphify_references_update_graphify_reference_incremental_update_and_cluster_only"
+    ],
+    "61": [
+      "lints_check_src_consistent_type_imports",
+      "lints_check_src_consistent_type_imports_first",
+      "lints_check_src_types",
+      "lints_check_src_types_lead"
+    ],
+    "62": [
+      "scripts_check_lints",
+      "scripts_check_lints_bounded",
+      "scripts_check_lints_fail",
+      "scripts_check_lints_sh__entry"
+    ],
+    "63": [
+      "scripts_hooks_guard_bash",
+      "scripts_hooks_guard_bash_has",
+      "scripts_hooks_guard_bash_has_i",
+      "scripts_hooks_guard_bash_sh__entry"
+    ],
+    "64": [
+      "claude_commands_add_port",
+      "claude_commands_add_port_add_port",
+      "claude_commands_add_port_delegate"
+    ],
+    "65": [
+      "claude_commands_add_route",
+      "claude_commands_add_route_add_route",
+      "claude_commands_add_route_delegate"
+    ],
+    "66": [
+      "claude_commands_add_screen",
+      "claude_commands_add_screen_add_screen",
+      "claude_commands_add_screen_delegate"
+    ],
+    "67": [
+      "claude_commands_add_slice",
+      "claude_commands_add_slice_add_slice",
+      "claude_commands_add_slice_delegate"
+    ],
+    "68": [
+      "claude_commands_claim_check",
+      "claude_commands_claim_check_claim_check",
+      "claude_commands_claim_check_delegate"
+    ],
+    "69": [
+      "claude_commands_clean_room_rebuild",
+      "claude_commands_clean_room_rebuild_clean_room_rebuild",
+      "claude_commands_clean_room_rebuild_delegate"
+    ],
+    "70": [
+      "claude_commands_corpus_retrieval",
+      "claude_commands_corpus_retrieval_corpus_retrieval",
+      "claude_commands_corpus_retrieval_delegate"
+    ],
+    "71": [
+      "claude_commands_diagnosing_bugs",
+      "claude_commands_diagnosing_bugs_delegate",
+      "claude_commands_diagnosing_bugs_diagnosing_bugs"
+    ],
+    "72": [
+      "claude_commands_domain_modeling",
+      "claude_commands_domain_modeling_delegate",
+      "claude_commands_domain_modeling_domain_modeling"
+    ],
+    "73": [
+      "claude_commands_grilling",
+      "claude_commands_grilling_delegate",
+      "claude_commands_grilling_grilling"
+    ],
+    "74": [
+      "claude_commands_learn",
+      "claude_commands_learn_delegate",
+      "claude_commands_learn_learn"
+    ],
+    "75": [
+      "claude_commands_plan",
+      "claude_commands_plan_delegate",
+      "claude_commands_plan_plan"
+    ],
+    "76": [
+      "claude_commands_research",
+      "claude_commands_research_delegate",
+      "claude_commands_research_research"
+    ],
+    "77": [
+      "claude_commands_review",
+      "claude_commands_review_delegate",
+      "claude_commands_review_review"
+    ],
+    "78": [
+      "claude_commands_ship",
+      "claude_commands_ship_delegate",
+      "claude_commands_ship_ship"
+    ],
+    "79": [
+      "claude_commands_spec",
+      "claude_commands_spec_delegate",
+      "claude_commands_spec_spec"
+    ],
+    "80": [
+      "claude_commands_tdd",
+      "claude_commands_tdd_delegate",
+      "claude_commands_tdd_tdd"
+    ],
+    "81": [
+      "claude_commands_verified_status",
+      "claude_commands_verified_status_delegate",
+      "claude_commands_verified_status_verified_status"
+    ],
+    "82": [
+      "claude_commands_visual_review",
+      "claude_commands_visual_review_delegate",
+      "claude_commands_visual_review_visual_review"
+    ],
+    "83": [
+      "claude_rules_playbooks",
+      "claude_rules_playbooks_cross_repo_relationship_1_n",
+      "claude_rules_playbooks_playbooks_for_beautifulreactnative_load_on_demand"
+    ],
+    "84": [
+      "claude_skills_graphify_references_github_and_merge",
+      "claude_skills_graphify_references_github_and_merge_graphify_reference_github_clone_and_cross_repo_merge",
+      "claude_skills_graphify_references_github_and_merge_step_0_clone_github_repo_s_only_if_a_github_url_was_given"
+    ],
+    "85": [
+      "claude_skills_graphify_references_transcribe",
+      "claude_skills_graphify_references_transcribe_graphify_reference_transcribe_video_and_audio",
+      "claude_skills_graphify_references_transcribe_step_2_5_transcribe_video_audio_files_only_if_video_files_detected"
+    ],
+    "86": [
+      "lints_check_src_features_orders_viewmodels_bad_platform",
+      "lints_check_src_stubs_react_native",
+      "lints_check_src_stubs_react_native_platform"
+    ],
+    "87": [
+      "lints_check_src_features_orders_views_bad_sdk",
+      "lints_check_src_sdk_index",
+      "lints_check_src_sdk_index_sdk"
+    ],
+    "88": [
+      "lints_check_src_sdk_bad_session",
+      "lints_check_src_session_index",
+      "lints_check_src_session_index_session"
+    ],
+    "89": [
+      "lints_check_src_switch_exhaustiveness",
+      "lints_check_src_switch_exhaustiveness_kind",
+      "lints_check_src_switch_exhaustiveness_label"
+    ],
+    "90": [
+      "claude_claude",
+      "claude_claude_graphify"
+    ],
+    "91": [
+      "claude_readme",
+      "claude_readme_claude_this_repo_s_claude_code_kit"
+    ],
+    "92": [
+      "claude_skills_claim_check_credits",
+      "claude_skills_claim_check_credits_credits"
+    ],
+    "93": [
+      "claude_skills_clean_room_rebuild_credits",
+      "claude_skills_clean_room_rebuild_credits_credits"
+    ],
+    "94": [
+      "claude_skills_corpus_retrieval_credits",
+      "claude_skills_corpus_retrieval_credits_credits"
+    ],
+    "95": [
+      "claude_skills_diagnosing_bugs_credits",
+      "claude_skills_diagnosing_bugs_credits_credits"
+    ],
+    "96": [
+      "claude_skills_domain_modeling_credits",
+      "claude_skills_domain_modeling_credits_credits"
+    ],
+    "97": [
+      "claude_skills_graphify_references_extraction_spec",
+      "claude_skills_graphify_references_extraction_spec_graphify_reference_extraction_subagent_prompt"
+    ],
+    "98": [
+      "claude_skills_grilling_credits",
+      "claude_skills_grilling_credits_credits"
+    ],
+    "99": [
+      "claude_skills_research_credits",
+      "claude_skills_research_credits_credits"
+    ],
+    "100": [
+      "claude_skills_tdd_credits",
+      "claude_skills_tdd_credits_credits"
+    ],
+    "101": [
+      "claude_skills_verified_status_credits",
+      "claude_skills_verified_status_credits_credits"
+    ],
+    "102": [
+      "claude_skills_visual_review_credits",
+      "claude_skills_visual_review_credits_credits"
+    ],
+    "103": [
+      "lints_check_src_clean",
+      "lints_check_src_clean_add"
+    ],
+    "104": [
+      "lints_check_src_eval",
+      "lints_check_src_eval_result"
+    ],
+    "105": [
+      "lints_check_src_explicit_module_boundary_types",
+      "lints_check_src_explicit_module_boundary_types_addnumbers"
+    ],
+    "106": [
+      "lints_check_src_floating_promise",
+      "lints_check_src_floating_promise_save"
+    ],
+    "107": [
+      "lints_check_src_new_func",
+      "lints_check_src_new_func_fn"
+    ],
+    "108": [
+      "lints_check_src_no_unnecessary_type_assertion",
+      "lints_check_src_no_unnecessary_type_assertion_one"
+    ],
+    "109": [
+      "lints_check_eslint_config"
+    ],
+    "110": [
+      "lints_check_src_ban_ts_comment"
+    ],
+    "111": [
+      "lints_check_src_consistent_type_imports_second"
+    ],
+    "112": [
+      "lints_check_src_eslint_comments"
+    ],
+    "113": [
+      "lints_check_src_features_orders_viewmodels_bad_platform_os"
+    ],
+    "114": [
+      "lints_check_src_features_orders_views_bad_sdk_client"
+    ],
+    "115": [
+      "lints_check_src_misused_promises"
+    ],
+    "116": [
+      "lints_check_src_no_console"
+    ],
+    "117": [
+      "lints_check_src_sdk_bad_session_captured"
+    ],
+    "118": [
+      "lints_eslint_config"
+    ],
+    "119": [
+      "tests_contracts_init"
+    ],
+    "120": [
+      "tests_e2e_init"
+    ],
+    "121": [
+      "tests_init"
+    ],
+    "122": [
+      "tests_integration_init"
+    ],
+    "123": [
+      "tests_unit_init"
+    ]
+  },
+  "cohesion": {
+    "0": 0.05222734254992319,
+    "1": 0.13574660633484162,
+    "2": 0.041666666666666664,
+    "3": 0.16376306620209058,
+    "4": 0.1319073083778966,
+    "5": 0.06666666666666667,
+    "6": 0.10344827586206896,
+    "7": 0.08,
+    "8": 0.2510822510822511,
+    "9": 0.12280701754385964,
+    "10": 0.1111111111111111,
+    "11": 0.125,
+    "12": 0.13333333333333333,
+    "13": 0.13333333333333333,
+    "14": 0.21904761904761905,
+    "15": 0.16666666666666666,
+    "16": 0.16666666666666666,
+    "17": 0.2909090909090909,
+    "18": 0.2,
+    "19": 0.2222222222222222,
+    "20": 0.2222222222222222,
+    "21": 0.2222222222222222,
+    "22": 0.3611111111111111,
+    "23": 0.39285714285714285,
+    "24": 0.2857142857142857,
+    "25": 0.2857142857142857,
+    "26": 0.2857142857142857,
+    "27": 0.2857142857142857,
+    "28": 0.2857142857142857,
+    "29": 0.2857142857142857,
+    "30": 0.2857142857142857,
+    "31": 0.2857142857142857,
+    "32": 0.2857142857142857,
+    "33": 0.2857142857142857,
+    "34": 0.2857142857142857,
+    "35": 0.2857142857142857,
+    "36": 0.2857142857142857,
+    "37": 0.2857142857142857,
+    "38": 0.2857142857142857,
+    "39": 0.2857142857142857,
+    "40": 0.2857142857142857,
+    "41": 0.2857142857142857,
+    "42": 0.2857142857142857,
+    "43": 0.2857142857142857,
+    "44": 0.2857142857142857,
+    "45": 0.2857142857142857,
+    "46": 0.2857142857142857,
+    "47": 0.2857142857142857,
+    "48": 0.2857142857142857,
+    "49": 0.2857142857142857,
+    "50": 0.2857142857142857,
+    "51": 0.2857142857142857,
+    "52": 0.2857142857142857,
+    "53": 0.2857142857142857,
+    "54": 0.3333333333333333,
+    "55": 0.5333333333333333,
+    "56": 0.7,
+    "57": 0.5,
+    "58": 0.5,
+    "59": 0.5,
+    "60": 0.5,
+    "61": 0.6666666666666666,
+    "62": 0.8333333333333334,
+    "63": 0.8333333333333334,
+    "64": 0.6666666666666666,
+    "65": 0.6666666666666666,
+    "66": 0.6666666666666666,
+    "67": 0.6666666666666666,
+    "68": 0.6666666666666666,
+    "69": 0.6666666666666666,
+    "70": 0.6666666666666666,
+    "71": 0.6666666666666666,
+    "72": 0.6666666666666666,
+    "73": 0.6666666666666666,
+    "74": 0.6666666666666666,
+    "75": 0.6666666666666666,
+    "76": 0.6666666666666666,
+    "77": 0.6666666666666666,
+    "78": 0.6666666666666666,
+    "79": 0.6666666666666666,
+    "80": 0.6666666666666666,
+    "81": 0.6666666666666666,
+    "82": 0.6666666666666666,
+    "83": 0.6666666666666666,
+    "84": 0.6666666666666666,
+    "85": 0.6666666666666666,
+    "86": 1.0,
+    "87": 1.0,
+    "88": 1.0,
+    "89": 0.6666666666666666,
+    "90": 1.0,
+    "91": 1.0,
+    "92": 1.0,
+    "93": 1.0,
+    "94": 1.0,
+    "95": 1.0,
+    "96": 1.0,
+    "97": 1.0,
+    "98": 1.0,
+    "99": 1.0,
+    "100": 1.0,
+    "101": 1.0,
+    "102": 1.0,
+    "103": 1.0,
+    "104": 1.0,
+    "105": 1.0,
+    "106": 1.0,
+    "107": 1.0,
+    "108": 1.0,
+    "109": 1.0,
+    "110": 1.0,
+    "111": 1.0,
+    "112": 1.0,
+    "113": 1.0,
+    "114": 1.0,
+    "115": 1.0,
+    "116": 1.0,
+    "117": 1.0,
+    "118": 1.0,
+    "119": 1.0,
+    "120": 1.0,
+    "121": 1.0,
+    "122": 1.0,
+    "123": 1.0
+  },
+  "gods": [
+    {
+      "id": "tests_support_write",
+      "label": "write()",
+      "degree": 35
+    },
+    {
+      "id": "tests_unit_test_check_skill_unit_checkskilltests",
+      "label": "CheckSkillTests",
+      "degree": 35
+    },
+    {
+      "id": "tests_unit_test_check_skill_unit_build_valid_repo",
+      "label": "build_valid_repo()",
+      "degree": 32
+    },
+    {
+      "id": "scripts_check_skill_checker",
+      "label": "Checker",
+      "degree": 26
+    },
+    {
+      "id": "scripts_check_examples_check_repo",
+      "label": "check_repo()",
+      "degree": 17
+    },
+    {
+      "id": "skills_reactnative_best_practices_skill_react_native_best_practices",
+      "label": "React Native best practices",
+      "degree": 17
+    },
+    {
+      "id": "scripts_check_skill_yamlparser",
+      "label": "YamlParser",
+      "degree": 16
+    },
+    {
+      "id": "readme_beautiful_react_native",
+      "label": "Beautiful React Native",
+      "degree": 15
+    },
+    {
+      "id": "plugin_com_openai_interface",
+      "label": "interface",
+      "degree": 14
+    },
+    {
+      "id": "claude_skills_graphify_skill_what_you_must_do_when_invoked",
+      "label": "What You Must Do When Invoked",
+      "degree": 12
+    }
+  ],
+  "surprises": [
+    {
+      "source": "add_portable_plugin()",
+      "target": "write()",
+      "source_files": [
+        "tests/unit/test_check_skill_unit.py",
+        "tests/_support.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "build_valid_repo()",
+      "target": "write()",
+      "source_files": [
+        "tests/unit/test_check_skill_unit.py",
+        "tests/_support.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `write()` connect `write` to `_support.py`?",
+      "why": "High betweenness centrality (0.014) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `render()` connect `check-examples.py` to `Path`?",
+      "why": "High betweenness centrality (0.005) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `load_script()` connect `_support.py` to `write`?",
+      "why": "High betweenness centrality (0.004) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `name`, `version`, `private` to the rest of the system?",
+      "why": "417 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `_support.py` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.05222734254992319 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `write` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.13574660633484162 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Beautiful React Native` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.041666666666666664 - nodes in this community are weakly interconnected."
+    }
+  ]
+}
