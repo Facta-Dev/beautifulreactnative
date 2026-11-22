@@ -1,5 +1,5 @@
 ---
-name: "<app> Claim Check"
+name: claim-check
 description: "Guards every substantive claim in an <app> deliverable: each claim cites a resolvable evidence id, carries a confidence tier, and open questions stay in a ledger until cited evidence closes them."
 division: core
 ---

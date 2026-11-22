@@ -1,5 +1,5 @@
 ---
-name: "<app> Verified Status"
+name: verified-status
 description: "Emits a status table for <app> where each row states what works, how it was verified, and what was not verified or run; never claims a live run that did not happen."
 division: core
 ---

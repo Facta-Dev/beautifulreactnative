@@ -1,5 +1,5 @@
 ---
-name: "<app> Visual Review"
+name: visual-review
 description: "Reviews a rendered <app> surface, not a diff: shoot the running artifact with the project's own harness, score ten dimensions, fix the three weakest, reshoot, at most three rounds, to an average of 8 with no score under 7."
 division: core
 ---

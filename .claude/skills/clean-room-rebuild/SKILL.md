@@ -1,5 +1,5 @@
 ---
-name: "<app> Clean-Room Rebuild"
+name: clean-room-rebuild
 description: "Rebuilds a target's behaviour in <app> from observation alone: read only what a user or visitor sees, copy no protected assets, keep a credits table, and state plainly that the work is based on the original."
 division: core
 ---

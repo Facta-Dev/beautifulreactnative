@@ -1,5 +1,5 @@
 ---
-name: "<app> Corpus Retrieval"
+name: corpus-retrieval
 description: "Answers questions about <app> from its own documentation corpus (docs/, playbooks, references/) index-first, in at most five retrieval rounds, with file:line citations, and refuses plainly when the corpus does not answer."
 division: core
 ---
