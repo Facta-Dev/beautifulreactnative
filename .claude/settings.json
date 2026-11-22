@@ -28,6 +28,17 @@
           }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "Read(./.env.*)"
+          }
+        ]
+      }
     ]
   },
   "permissions": {
@@ -42,7 +53,8 @@
       "Read(~/.ssh/**)",
       "Read(~/.aws/**)",
       "Read(~/.claude/.credentials.json)",
-      "Bash(rm -rf *)"
+      "Bash(rm -rf *)",
+      "bash \"$CLAUDE_PROJECT_DIR/scripts/hooks/knowledge-sync.sh\""
     ]
   }
 }
